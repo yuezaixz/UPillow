@@ -1,0 +1,6 @@
+framework module Pods_UPillow {
+  umbrella header "Pods-UPillow-umbrella.h"
+
+  export *
+  module * { export * }
+}
