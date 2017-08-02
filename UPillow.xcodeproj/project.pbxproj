@@ -13,6 +13,9 @@
 		A60B14381F2F048F00675C6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A60B14361F2F048F00675C6E /* Main.storyboard */; };
 		A60B143A1F2F048F00675C6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A60B14391F2F048F00675C6E /* Assets.xcassets */; };
 		A60B143D1F2F048F00675C6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A60B143B1F2F048F00675C6E /* LaunchScreen.storyboard */; };
+		A6DD6EC01F30801F0063B562 /* WDCentralManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EBF1F30801F0063B562 /* WDCentralManage.swift */; };
+		A6DD6EC21F30C4C20063B562 /* WDCBConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EC11F30C4C20063B562 /* WDCBConfiguration.swift */; };
+		A6DD6EC41F30C9FC0063B562 /* WDPeripheal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EC31F30C9FC0063B562 /* WDPeripheal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		A60B14391F2F048F00675C6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A60B143C1F2F048F00675C6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A60B143E1F2F048F00675C6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6DD6EBF1F30801F0063B562 /* WDCentralManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCentralManage.swift; sourceTree = "<group>"; };
+		A6DD6EC11F30C4C20063B562 /* WDCBConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCBConfiguration.swift; sourceTree = "<group>"; };
+		A6DD6EC31F30C9FC0063B562 /* WDPeripheal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDPeripheal.swift; sourceTree = "<group>"; };
 		AF649B0A3BE00AB93442C8A8 /* Pods_UPillow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UPillow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,7 +75,7 @@
 		A60B14311F2F048F00675C6E /* UPillow */ = {
 			isa = PBXGroup;
 			children = (
-				A60B14441F3017FC00675C6E /* classes */,
+				A60B14441F3017FC00675C6E /* Classes */,
 				A60B14321F2F048F00675C6E /* AppDelegate.swift */,
 				A60B14361F2F048F00675C6E /* Main.storyboard */,
 				A60B14391F2F048F00675C6E /* Assets.xcassets */,
@@ -79,12 +85,31 @@
 			path = UPillow;
 			sourceTree = "<group>";
 		};
-		A60B14441F3017FC00675C6E /* classes */ = {
+		A60B14441F3017FC00675C6E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A6DD6EBE1F307CF20063B562 /* WDBluetoothKit */,
+				A60B14451F301BBF00675C6E /* View */,
 				A60B14341F2F048F00675C6E /* IndexViewController.swift */,
 			);
-			path = classes;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A60B14451F301BBF00675C6E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A6DD6EBE1F307CF20063B562 /* WDBluetoothKit */ = {
+			isa = PBXGroup;
+			children = (
+				A6DD6EBF1F30801F0063B562 /* WDCentralManage.swift */,
+				A6DD6EC11F30C4C20063B562 /* WDCBConfiguration.swift */,
+				A6DD6EC31F30C9FC0063B562 /* WDPeripheal.swift */,
+			);
+			path = WDBluetoothKit;
 			sourceTree = "<group>";
 		};
 		EF96919C995903F8E39FB2B0 /* Pods */ = {
@@ -219,7 +244,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A60B14351F2F048F00675C6E /* IndexViewController.swift in Sources */,
+				A6DD6EC41F30C9FC0063B562 /* WDPeripheal.swift in Sources */,
 				A60B14331F2F048F00675C6E /* AppDelegate.swift in Sources */,
+				A6DD6EC21F30C4C20063B562 /* WDCBConfiguration.swift in Sources */,
+				A6DD6EC01F30801F0063B562 /* WDCentralManage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L6U7BB57HF;
 				INFOPLIST_FILE = UPillow/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.runmaf.pillow.UPillow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -374,6 +403,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L6U7BB57HF;
 				INFOPLIST_FILE = UPillow/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.runmaf.pillow.UPillow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
