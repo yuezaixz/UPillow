@@ -18,6 +18,7 @@ public protocol WDCentralManageDelegate: class {
     func didConnected(for peripheal:WDPeripheal)
     func didDisConnected(for peripheal:WDPeripheal)
     func failConnected(for uuidStr:String)
+    func autoConnectTimeout(for uuidStr:String)
 }
 
 public class WDCentralManage: NSObject,CBCentralManagerDelegate {
@@ -39,6 +40,8 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     public weak var delegate: WDCentralManageDelegate?
     
     public var _connectingUUIDStr : String?
+    
+    public var _autoConnectUUIDStr : String?
     
     public enum ContinuousScanState {
         case stopped
@@ -74,6 +77,9 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     
     @objc private func durationTimerElapsed() {
         endScan()
+        if let autoConnectUUIDStr = _autoConnectUUIDStr {
+            delegate?.autoConnectTimeout(for: autoConnectUUIDStr)
+        }
     }
     
     private func endScan() {
@@ -103,6 +109,11 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
         }
     }
     
+    func autoConnect(with configuration:WDCBConfiguration, for uuidStr:String) {
+        _autoConnectUUIDStr = uuidStr
+        self.scanWithConfiguration(configuration, duration: 15)
+    }
+    
     // MARK: CBCentralManagerDelegate
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         //通过delegate通知状态变化
@@ -111,17 +122,25 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         let discovery = WDDiscovery.init(advertisementData: advertisementData, remotePeripheral: peripheral, RSSI: RSSI.intValue)
-        if !discoveries.contains(discovery) {
-            discoveries.append(discovery)
-        } else {
-            if let resultDiscovery = discoveries.filter({ (foundPeripheral) -> Bool in
-                foundPeripheral == discovery
-            }).last {
-                resultDiscovery.RSSI = RSSI.intValue
+        if let autoConnectUUIDStr = _autoConnectUUIDStr {
+            if discovery.remotePeripheral.identifier.uuidString == autoConnectUUIDStr {
+                self.interruptScan()
+                _autoConnectUUIDStr = nil
+                self.connect(discovery: discovery)
             }
+        } else {
+            if !discoveries.contains(discovery) {
+                discoveries.append(discovery)
+            } else {
+                if let resultDiscovery = discoveries.filter({ (foundPeripheral) -> Bool in
+                    foundPeripheral == discovery
+                }).last {
+                    resultDiscovery.RSSI = RSSI.intValue
+                }
+            }
+            
+            delegate?.discoverys(discoveries)
         }
-        
-        delegate?.discoverys(discoveries)
     }
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
