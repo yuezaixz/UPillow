@@ -7,3 +7,20 @@
 //
 
 import Foundation
+import CoreBluetooth
+
+public class WDCBConfiguration {
+    
+    public let scanServiceUUIDs: [CBUUID]
+    public let serviceUUID: CBUUID
+    public let writeCharacteristicUUID: CBUUID
+    public let notifyCharacteristicUUID: CBUUID
+    
+    public init(scanServiceUUIDs: [CBUUID], serviceUUID: CBUUID, writeCharacteristicUUID: CBUUID, notifyCharacteristicUUID: CBUUID) {
+        self.scanServiceUUIDs = scanServiceUUIDs
+        self.serviceUUID = serviceUUID
+        self.writeCharacteristicUUID = writeCharacteristicUUID
+        self.notifyCharacteristicUUID = notifyCharacteristicUUID
+    }
+    
+}
