@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -532,10 +533,9 @@
         <scene sceneID="njn-10-mZg">
             <objects>
                 <tabBarController id="fYL-dH-kZR" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="61e-AA-fM3">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="61e-AA-fM3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="TSL-wS-yk1" kind="relationship" relationship="viewControllers" id="mt1-ZO-Cfh"/>

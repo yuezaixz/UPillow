@@ -22,7 +22,7 @@ enum RMHomeStepCountStatus {
     case connected
 }
 
-class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealDelegate {
+class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealDelegate,PDataHandleDelegate {
     
     @IBOutlet weak var autoConnectView: UIView!
     
@@ -41,6 +41,7 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
         self.autoConnectView.layer.borderWidth = 1.0;
         self.autoConnectView.layer.borderColor = UIColor.lightGray.cgColor;
         WDCentralManage.shareInstance.delegate = self
+        PDataHandle.shareInstance.delegate = self
         pillowConfiguration = WDCBConfiguration.init(
             scanServiceUUIDs: [CBUUID(nsuuid: UUID(uuidString: "00001801-0000-1000-8000-00805F9B34FB")!),
                                CBUUID(nsuuid:UUID(uuidString: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")!)],
@@ -144,7 +145,7 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     
     func discoverys(_ discoverys: [WDDiscovery]) {
         for discovery in discoverys {
-            if discovery.remotePeripheral.identifier.uuidString == "B7ED2A72-3596-4857-B493-E592296EE266" {
+            if discovery.remotePeripheral.identifier.uuidString == "2B552FAC-F17E-4397-9E5F-D61B14B19FD5" {
                 WDCentralManage.shareInstance.connect(discovery: discovery)
             }
         }
@@ -155,6 +156,22 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
         peripheal.delegate = self
     }
     
+    func didDisConnected(for peripheal: WDPeripheal) {
+        
+    }
+    
+    func failConnected(for uuidStr: String) {
+        
+    }
+    
+    func autoConnectTimeout(for uuidStr: String) {
+        
+    }
+    
+    func scanTimeout() {
+        
+    }
+    
     //MARK:WDPeripheralDelegate
     
     func didFoundCharacteristic(_ peripheral: WDPeripheal) {
@@ -162,7 +179,13 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     }
     
     func wdPeripheral(_ peripheral: WDPeripheal, received receivedData: Data) {
-        print(receivedData)
+        PDataHandle.shareInstance.handleReceivedData(receivedData)
+    }
+    
+    //MARK:PDataHandleDelegate
+    
+    func notifyPillow(majorVersion: Int, minorVersion: Int, reVersion: Int) {
+        print("Pillow Version:\(majorVersion).\(minorVersion).\(reVersion)")
     }
     
     

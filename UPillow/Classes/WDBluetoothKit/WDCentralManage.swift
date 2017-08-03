@@ -9,6 +9,11 @@
 import Foundation
 import CoreBluetooth
 
+let kLastPillowKey =  "kLastPillowKey"
+let kLastPillowName =  "kLastPillowName"
+let kLastPillowUUID =  "kLastPillowUUID"
+let kLastPillowUserId =  "kLastPillowUserId"
+
 /**
  The central's delegate is called when asynchronous events occur.
  */
@@ -19,6 +24,7 @@ public protocol WDCentralManageDelegate: class {
     func didDisConnected(for peripheal:WDPeripheal)
     func failConnected(for uuidStr:String)
     func autoConnectTimeout(for uuidStr:String)
+    func scanTimeout()
 }
 
 public class WDCentralManage: NSObject,CBCentralManagerDelegate {
@@ -79,6 +85,8 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
         endScan()
         if let autoConnectUUIDStr = _autoConnectUUIDStr {
             delegate?.autoConnectTimeout(for: autoConnectUUIDStr)
+        } else {
+            delegate?.scanTimeout()
         }
     }
     
@@ -98,15 +106,61 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
         }
     }
     
+    private func saveLastUUIDStr(_ uuidStr:String, name:String, userId:Int) {
+        UserDefaults.standard.set([kLastPillowUUID:uuidStr, kLastPillowName:name, kLastPillowUserId:userId], forKey: kLastPillowKey)
+    }
+    
+    private func clearLastUUIDStr() {
+        UserDefaults.standard.removeObject(forKey: kLastPillowKey)
+    }
+    
+    func lastPeerUUIDStr() -> String? {
+        guard let dict = UserDefaults.standard.object(forKey: kLastPillowKey) as? Dictionary<String, Any> else {
+            return nil
+        }
+        return dict[kLastPillowUUID] as? String
+    }
+    
+    func lastPeerName() -> String? {
+        guard let dict = UserDefaults.standard.object(forKey: kLastPillowKey) as? Dictionary<String, Any> else {
+            return nil
+        }
+        return dict[kLastPillowName] as? String
+    }
+    
+    func disconnectCurrentPeer(){
+        guard let centralManager = _centralManager else {
+            return
+        }
+        
+        if let currentPeer = self.currentPeer {
+            centralManager.cancelPeripheralConnection(currentPeer.peripheral)
+            self.currentPeer = nil
+            clearLastUUIDStr()
+        }
+    }
+    
     func connect(discovery:WDDiscovery) {
         if let _ = _connectingUUIDStr {
             return
         }
-        if let centralManager = _centralManager {
-            print("connect \(discovery.remotePeripheral.identifier)")
-            _connectingUUIDStr = discovery.remotePeripheral.identifier.uuidString
-            centralManager.connect(discovery.remotePeripheral, options: [CBConnectPeripheralOptionNotifyOnDisconnectionKey:true])
+        guard let centralManager = _centralManager else {
+            return
         }
+        
+        if let currentPeer = self.currentPeer {
+            if currentPeer.identifier == discovery.remotePeripheral.identifier {
+                //同一个，不重复连接了
+                return
+            } else {
+                centralManager.cancelPeripheralConnection(discovery.remotePeripheral)
+                self.currentPeer = nil
+            }
+        }
+        saveLastUUIDStr(discovery.remotePeripheral.identifier.uuidString, name: discovery.remotePeripheral.name ?? "", userId: 0)
+        print("connect \(discovery.remotePeripheral.identifier)")
+        _connectingUUIDStr = discovery.remotePeripheral.identifier.uuidString
+        centralManager.connect(discovery.remotePeripheral, options: [CBConnectPeripheralOptionNotifyOnDisconnectionKey:true])
     }
     
     func autoConnect(with configuration:WDCBConfiguration, for uuidStr:String) {
@@ -151,8 +205,10 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     }
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        delegate?.didDisConnected(for: currentPeer)
-        currentPeer = nil
+        if let currentPeer = self.currentPeer,currentPeer.identifier == peripheral.identifier {
+            delegate?.didDisConnected(for: currentPeer)
+            self.currentPeer = nil
+        }
     }
     
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
