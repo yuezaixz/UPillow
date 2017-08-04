@@ -14,7 +14,7 @@ public class WDDiscovery :Equatable {
     public var localName:String!
     
     public var name: String? {
-        if localName == self.localName {
+        if let localName = self.localName {
             return localName
         }
         return advertisementData[CBAdvertisementDataLocalNameKey] as? String

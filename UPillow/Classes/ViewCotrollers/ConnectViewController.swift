@@ -10,7 +10,7 @@ import UIKit
 
 let kPillowSearchTimes =  30
 
-class ConnectViewController: UIViewController,WDCentralManageDelegate {
+class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var topShadowView: UIView!
     
@@ -21,6 +21,7 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate {
     @IBOutlet weak var pillowStopSearchView: UIView!
     @IBOutlet weak var searchAgainLab: UILabel!
     @IBOutlet weak var searchBtn: UIButton!
+    @IBOutlet weak var pillowSearchTableView: UITableView!
     
     @IBOutlet weak var pillowSearchStatusLab: UILabel!
     @IBOutlet weak var rssiLevelImageView: UIImageView!
@@ -32,6 +33,7 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate {
     
     private var isSearch:Bool = false
     private var searchTimer:Timer?
+    private let PillowDiscoveryCellIdentifier = "PillowDiscoveryCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +43,11 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate {
         self.topShadowView.layer.shadowRadius = 5.0//阴影半径
         
         WDCentralManage.shareInstance.delegate = self
-
+//        pillowSearchTableView.register(PillowDiscoveryCell.self, forCellReuseIdentifier: PillowDiscoveryCellIdentifier)
+        pillowSearchTableView.dataSource = self
+        pillowSearchTableView.delegate = self
+        
+        pillowSearchTableView.tableFooterView = UIView.init()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -118,6 +124,21 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate {
         return rotationAnimation
     }
     
+    //MARK:UITableViewDelegate,UITableViewDatasource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return WDCentralManage.shareInstance.discoveries.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:PillowDiscoveryCell = pillowSearchTableView.dequeueReusableCell(withIdentifier: PillowDiscoveryCellIdentifier, for: indexPath) as! PillowDiscoveryCell
+        let discovery = WDCentralManage.shareInstance.discoveries[indexPath.row]
+        cell.loadByDevice(discovery)
+        cell.loadRSSI(discovery.RSSI)
+        
+        return cell
+    }
+    
     //MARK:Actions
     @IBAction func actionSearch(_ sender: UIButton) {
         
@@ -136,7 +157,7 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate {
 //                WDCentralManage.shareInstance.connect(discovery: discovery)
 //            }
 //        }
-        print(discoverys)
+        pillowSearchTableView.reloadData()
     }
     
     func didConnected(for peripheal: WDPeripheal) {
