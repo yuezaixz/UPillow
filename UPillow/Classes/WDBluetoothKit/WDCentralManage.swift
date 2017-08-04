@@ -25,6 +25,7 @@ public protocol WDCentralManageDelegate: class {
     func failConnected(for uuidStr:String)
     func autoConnectTimeout(for uuidStr:String)
     func scanTimeout()
+    func changeState(_ state:WDCentralManagerState)
 }
 
 //空实现，optional
@@ -47,6 +48,9 @@ extension WDCentralManageDelegate {
     func scanTimeout(){
         
     }
+    func changeState(_ state:WDCentralManagerState){
+        
+    }
 }
 
 public class WDCentralManage: NSObject,CBCentralManagerDelegate {
@@ -61,7 +65,7 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     
     private var busy: Bool = false
     
-    private var discoveries:[WDDiscovery] = []
+    public var discoveries:[WDDiscovery] = []
     
     public var currentPeer:WDPeripheal!
     
@@ -70,6 +74,17 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     public var _connectingUUIDStr : String?
     
     public var _autoConnectUUIDStr : String?
+    
+    var bluetoothState:WDCentralManagerState {
+        guard let _ = _centralManager else {
+            return WDCentralManagerState.unsupported
+        }
+        if #available(tvOS 10.0, iOS 10.0, *) {
+            return WDCentralManagerState(managerState: _centralManager.state)
+        } else {
+            return WDCentralManagerState(centralManagerState: _centralManager.centralManagerState)
+        }
+    }
     
     public enum ContinuousScanState {
         case stopped
@@ -88,11 +103,20 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     func scanWithConfiguration(_ configuration:WDCBConfiguration, duration:Int) {
         busy = true
         _currentConfiguration = configuration
+        
+        if self.bluetoothState == .poweredOn {
+            scan(duration: duration)
+        } else {
+            self.perform(#selector(scan(duration:)), with: duration, afterDelay: 1)
+        }
+        
+    }
+    
+    @objc internal func scan(duration:Int) {
         if let centralManager = _centralManager {
             centralManager.scanForPeripherals(withServices: _currentConfiguration.scanServiceUUIDs, options: nil)
             invalidateTimer()
             _durationTimer = Timer.scheduledTimer(timeInterval: TimeInterval(duration), target: self, selector: #selector(WDCentralManage.durationTimerElapsed), userInfo: nil, repeats: false)
-            
         }
     }
     
@@ -193,7 +217,11 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     // MARK: CBCentralManagerDelegate
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         //通过delegate通知状态变化
-        
+        if #available(tvOS 10.0, iOS 10.0, *) {
+            delegate?.changeState(WDCentralManagerState(managerState: _centralManager.state))
+        } else {
+            delegate?.changeState(WDCentralManagerState(centralManagerState: _centralManager.centralManagerState))
+        }
     }
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {

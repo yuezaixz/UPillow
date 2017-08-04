@@ -43,7 +43,7 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.perform(#selector(autoConnect), with: nil, afterDelay: 1)
+        self.perform(#selector(autoConnect), with: nil, afterDelay: 0.5)
     }
     
     @objc func autoConnect() {
@@ -100,6 +100,14 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
                 blue: CGFloat(kHomeStepCircleStartBlue+(kHomeStepCircleEndBlue-kHomeStepCircleStartBlue)*Double(i/(endIndex-startIndex))),
                 alpha: 1.0
             )
+        }
+    }
+    
+    //MARK: Action
+    
+    @IBAction func tapConnectGestureAction(_ sender: UITapGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.ended {
+            print("进入连接页面")
         }
     }
     
