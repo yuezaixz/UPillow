@@ -27,6 +27,28 @@ public protocol WDCentralManageDelegate: class {
     func scanTimeout()
 }
 
+//空实现，optional
+extension WDCentralManageDelegate {
+    func discoverys(_ discoverys:[WDDiscovery]){
+        
+    }
+    func didConnected(for peripheal:WDPeripheal){
+        
+    }
+    func didDisConnected(for peripheal:WDPeripheal){
+        
+    }
+    func failConnected(for uuidStr:String){
+        
+    }
+    func autoConnectTimeout(for uuidStr:String){
+        
+    }
+    func scanTimeout(){
+        
+    }
+}
+
 public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     
     static let shareInstance: WDCentralManage = WDCentralManage()
@@ -163,9 +185,9 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
         centralManager.connect(discovery.remotePeripheral, options: [CBConnectPeripheralOptionNotifyOnDisconnectionKey:true])
     }
     
-    func autoConnect(with configuration:WDCBConfiguration, for uuidStr:String) {
+    func autoConnect(with configuration:WDCBConfiguration, for uuidStr:String, duration:Int) {
         _autoConnectUUIDStr = uuidStr
-        self.scanWithConfiguration(configuration, duration: 15)
+        self.scanWithConfiguration(configuration, duration: duration)
     }
     
     // MARK: CBCentralManagerDelegate

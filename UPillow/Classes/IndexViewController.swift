@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreBluetooth
 
 let kHomeStepCircleStartRed = 131.0/255.0
 let kHomeStepCircleStartGreen =  50.0/255.0
@@ -34,60 +33,24 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     
     private var loadingIndex:Int = 0
     
-    private var pillowConfiguration:WDCBConfiguration!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.autoConnectView.layer.borderWidth = 1.0;
         self.autoConnectView.layer.borderColor = UIColor.lightGray.cgColor;
         WDCentralManage.shareInstance.delegate = self
         PDataHandle.shareInstance.delegate = self
-        pillowConfiguration = WDCBConfiguration.init(
-            scanServiceUUIDs: [CBUUID(nsuuid: UUID(uuidString: "00001801-0000-1000-8000-00805F9B34FB")!),
-                               CBUUID(nsuuid:UUID(uuidString: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")!)],
-            serviceUUID: CBUUID(nsuuid:UUID(uuidString: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")!),
-            writeCharacteristicUUID: CBUUID(nsuuid:UUID(uuidString: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")!),
-            notifyCharacteristicUUID: CBUUID(nsuuid:UUID(uuidString: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")!)
-        )
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.perform(#selector(scan), with: nil, afterDelay: 1)
-//        self.perform(#selector(IndexViewController.autoConnect(uuidStr:)), with: "D0FAA379-9534-4CE9-9D28-B5BF1069D5B7", afterDelay: 1)
+        self.perform(#selector(autoConnect), with: nil, afterDelay: 1)
     }
     
-//    @objc func autoConnect(uuidStr:String) {
-//        startAnimation()
-//        central.scanContinuouslyWithChangeHandler({ changes, discoveries in
-//            for discovery in discoveries {
-//                if discovery.remotePeripheral.identifier.uuidString == uuidStr {
-//                    self.central.interruptScan()
-//                    self.central.connect(remotePeripheral: discovery.remotePeripheral, completionHandler: { (bkPeripheal, error) in
-//                        print("connected bkPeripheal:\(bkPeripheal)")
-//                        bkPeripheal.delegate = self
-//                        let data = "VN".data(using: String.Encoding.utf8)
-//                        self.central.sendData(data!, toRemotePeer: bkPeripheal, completionHandler: { (data, bkPeer, error) in
-//                            print("success send Data\(data),\(bkPeer)")
-//                        })
-//                    })
-//                }
-//            }
-//        }, stateHandler: { newState in
-//            if newState == .scanning {
-//                print("scanning")
-//            } else if newState == .stopped {
-//                print("stopped")
-//            }
-//        }, errorHandler: { error in
-//            print("Error from scanning: \(error)")
-//        })
-//    }
-    
-    @objc private func scan() {
-        startAnimation()
-        
-        WDCentralManage.shareInstance.scanWithConfiguration(pillowConfiguration, duration: 10)
+    @objc func autoConnect() {
+        if let lastConnectUUIDStr = WDCentralManage.shareInstance.lastPeerUUIDStr() {
+            startAnimation()
+            WDCentralManage.shareInstance.autoConnect(with: WDCBConfigurationFactory.pillowConfiguration, for: lastConnectUUIDStr, duration:15)
+        }
     }
     
     // MARK: circle animation
@@ -97,7 +60,6 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
         clearCircleColor()
         stopAnimation()
         animationTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(loadingAnimation), userInfo: nil, repeats: true);
-//        animationTimer?.fire()
         self.status = .connecting
     }
     
@@ -143,33 +105,22 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     
     //MARK:WDCentralManageDelegate
     
-    func discoverys(_ discoverys: [WDDiscovery]) {
-        for discovery in discoverys {
-            if discovery.remotePeripheral.identifier.uuidString == "2B552FAC-F17E-4397-9E5F-D61B14B19FD5" {
-                WDCentralManage.shareInstance.connect(discovery: discovery)
-            }
-        }
-        print(discoverys)
-    }
-    
     func didConnected(for peripheal: WDPeripheal) {
         peripheal.delegate = self
+        stopAnimation()
+        //TODO 展示连接上鞋垫后的界面及效果
     }
     
     func didDisConnected(for peripheal: WDPeripheal) {
-        
+        //TODO 掉线后自动连接等操作
     }
     
     func failConnected(for uuidStr: String) {
-        
+        stopAnimation()
     }
     
     func autoConnectTimeout(for uuidStr: String) {
-        
-    }
-    
-    func scanTimeout() {
-        
+        stopAnimation()
     }
     
     //MARK:WDPeripheralDelegate
@@ -188,7 +139,7 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
         print("Pillow Version:\(majorVersion).\(minorVersion).\(reVersion)")
     }
     
-    
+    //MARK:other
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

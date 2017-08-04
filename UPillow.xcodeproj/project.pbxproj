@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88A98A8726F3171272FF4135 /* Pods_UPillow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF649B0A3BE00AB93442C8A8 /* Pods_UPillow.framework */; };
+		A605C5EE1F340439002157F8 /* WDCBConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A605C5ED1F340439002157F8 /* WDCBConfigurationFactory.swift */; };
 		A60B14331F2F048F00675C6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60B14321F2F048F00675C6E /* AppDelegate.swift */; };
 		A60B14351F2F048F00675C6E /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60B14341F2F048F00675C6E /* IndexViewController.swift */; };
 		A60B14381F2F048F00675C6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A60B14361F2F048F00675C6E /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		0FB69198C5D91623BCE06CD0 /* Pods-UPillow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UPillow.release.xcconfig"; path = "Pods/Target Support Files/Pods-UPillow/Pods-UPillow.release.xcconfig"; sourceTree = "<group>"; };
 		47514E3EF25A8FA86797F96B /* Pods-UPillow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UPillow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UPillow/Pods-UPillow.debug.xcconfig"; sourceTree = "<group>"; };
+		A605C5ED1F340439002157F8 /* WDCBConfigurationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCBConfigurationFactory.swift; sourceTree = "<group>"; };
 		A60B142F1F2F048F00675C6E /* UPillow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UPillow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60B14321F2F048F00675C6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A60B14341F2F048F00675C6E /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				A6DD6EC11F30C4C20063B562 /* WDCBConfiguration.swift */,
 				A6DD6EC31F30C9FC0063B562 /* WDPeripheal.swift */,
 				A6DD6EC61F32FB790063B562 /* PDataHandle.swift */,
+				A605C5ED1F340439002157F8 /* WDCBConfigurationFactory.swift */,
 			);
 			path = WDBluetoothKit;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A60B14351F2F048F00675C6E /* IndexViewController.swift in Sources */,
+				A605C5EE1F340439002157F8 /* WDCBConfigurationFactory.swift in Sources */,
 				A6DD6ECA1F3308BA0063B562 /* String+Extensions.swift in Sources */,
 				A6DD6EC41F30C9FC0063B562 /* WDPeripheal.swift in Sources */,
 				A6DD6EC71F32FB7A0063B562 /* PDataHandle.swift in Sources */,
