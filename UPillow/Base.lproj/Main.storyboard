@@ -752,7 +752,7 @@
                                             <constraint firstAttribute="width" constant="13" id="wVb-0L-iT1"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfH-z5-VPB">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfH-z5-VPB">
                                         <rect key="frame" x="275" y="0.0" width="100" height="82"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="s9W-LS-1nv"/>
@@ -949,13 +949,24 @@
                                                                         <constraint firstAttribute="width" constant="45" id="bsJ-br-EXj"/>
                                                                     </constraints>
                                                                 </imageView>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLt-ku-nmX">
+                                                                    <rect key="frame" x="275" y="0.0" width="100" height="64.5"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="100" id="v1a-UC-Ayr"/>
+                                                                    </constraints>
+                                                                    <connections>
+                                                                        <action selector="actionConnect:" destination="Ehr-bV-sRL" eventType="touchUpInside" id="cik-c9-RJP"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.1058823529" green="0.078431372550000003" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="EkZ-eJ-rOB" firstAttribute="centerY" secondItem="YSP-aL-L5E" secondAttribute="centerY" constant="-14" id="1fW-5t-lLA"/>
                                                                 <constraint firstItem="sr9-ug-sbd" firstAttribute="leading" secondItem="gJu-NC-6Hf" secondAttribute="leading" id="4br-53-WKq"/>
+                                                                <constraint firstAttribute="trailing" secondItem="yLt-ku-nmX" secondAttribute="trailing" id="BhX-OG-e7Z"/>
                                                                 <constraint firstItem="OTd-Fe-gbe" firstAttribute="centerY" secondItem="YSP-aL-L5E" secondAttribute="centerY" constant="-3.75" id="CGW-dx-4vU"/>
                                                                 <constraint firstItem="j4x-8o-J9R" firstAttribute="leading" secondItem="1Wk-PA-caE" secondAttribute="leading" constant="-5" id="GpM-yu-BFs"/>
+                                                                <constraint firstAttribute="bottom" secondItem="yLt-ku-nmX" secondAttribute="bottom" constant="10" id="LLV-uE-pSA"/>
                                                                 <constraint firstItem="gJu-NC-6Hf" firstAttribute="leading" secondItem="YSP-aL-L5E" secondAttribute="leading" constant="77" id="Nok-9o-jgf"/>
                                                                 <constraint firstItem="Sf8-sA-SQB" firstAttribute="leading" secondItem="YSP-aL-L5E" secondAttribute="leadingMargin" constant="20" id="Pfo-Sr-5U8"/>
                                                                 <constraint firstItem="sg6-UM-4iy" firstAttribute="leading" secondItem="gJu-NC-6Hf" secondAttribute="trailing" constant="5" id="Q9B-OZ-aSv"/>
@@ -968,6 +979,7 @@
                                                                 <constraint firstItem="sr9-ug-sbd" firstAttribute="top" secondItem="sg6-UM-4iy" secondAttribute="bottom" constant="3" id="bBY-I5-vgZ"/>
                                                                 <constraint firstAttribute="trailing" secondItem="EkZ-eJ-rOB" secondAttribute="trailing" constant="34" id="eaE-lh-Iek"/>
                                                                 <constraint firstItem="OTd-Fe-gbe" firstAttribute="leading" secondItem="YSP-aL-L5E" secondAttribute="leadingMargin" constant="20" id="g78-Ba-0wz"/>
+                                                                <constraint firstItem="yLt-ku-nmX" firstAttribute="top" secondItem="YSP-aL-L5E" secondAttribute="top" id="h1C-Y5-Wm9"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Sf8-sA-SQB" secondAttribute="trailing" constant="20" id="mU1-EJ-g1P"/>
                                                                 <constraint firstAttribute="bottomMargin" secondItem="Sf8-sA-SQB" secondAttribute="bottom" id="sIW-6Z-gMa"/>
                                                                 <constraint firstItem="EkZ-eJ-rOB" firstAttribute="leading" secondItem="1Wk-PA-caE" secondAttribute="trailing" constant="5" id="tz9-Qq-9CK"/>
@@ -1036,9 +1048,11 @@
                         <viewLayoutGuide key="safeArea" id="p7L-QO-nUJ"/>
                     </view>
                     <connections>
-                        <outlet property="connectLab" destination="xWR-4B-Dme" id="vJS-ek-3Bg"/>
+                        <outlet property="connectLab" destination="XiO-hr-Z4U" id="e6T-Of-ihw"/>
                         <outlet property="connectedImageView" destination="9yh-uf-FST" id="Nnn-O1-g1Y"/>
+                        <outlet property="currentPillowContainerView" destination="fyA-JG-LdW" id="EW5-L8-ZxJ"/>
                         <outlet property="deviceNameLabel" destination="P3u-9f-NeP" id="q8Q-cH-tCC"/>
+                        <outlet property="disConnectBtn" destination="IfH-z5-VPB" id="j7x-iu-oTL"/>
                         <outlet property="pillowFoundHeadView" destination="z3v-Gv-s9R" id="1mE-Fq-50N"/>
                         <outlet property="pillowSearchContainer" destination="3vj-ZK-XF0" id="NpW-uR-cb7"/>
                         <outlet property="pillowSearchStatusLab" destination="Y4F-HM-4XX" id="LR1-em-Bqe"/>
@@ -1047,6 +1061,7 @@
                         <outlet property="pillowSearchViewPurple" destination="YsH-xK-7SB" id="XEl-Tn-Mh1"/>
                         <outlet property="pillowSearchViewYellow" destination="ekE-JY-lEQ" id="jaa-jM-6di"/>
                         <outlet property="pillowStopSearchView" destination="2X2-9T-WhJ" id="2E8-Lp-C9h"/>
+                        <outlet property="rssiDescriptorLabel" destination="EnM-SN-hqD" id="pjw-ev-P1J"/>
                         <outlet property="rssiLabel" destination="9nW-40-YUZ" id="09f-tf-Vto"/>
                         <outlet property="rssiLevelImageView" destination="2Ia-eE-ivF" id="kL8-Th-ZrM"/>
                         <outlet property="searchAgainLab" destination="Opu-Vc-aSu" id="2RS-Lu-aEL"/>

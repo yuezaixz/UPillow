@@ -10,7 +10,7 @@ import UIKit
 
 let kPillowSearchTimes =  30
 
-class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableViewDelegate,UITableViewDataSource {
+class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableViewDelegate,UITableViewDataSource,PillowDiscoveryCellDelegate,WDPeriphealDelegate {
     
     @IBOutlet weak var topShadowView: UIView!
     
@@ -23,17 +23,22 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var pillowSearchTableView: UITableView!
     
+    @IBOutlet weak var currentPillowContainerView: UIView!
     @IBOutlet weak var pillowSearchStatusLab: UILabel!
     @IBOutlet weak var rssiLevelImageView: UIImageView!
     @IBOutlet weak var rssiLabel: UILabel!
+    @IBOutlet weak var rssiDescriptorLabel: UILabel!
     @IBOutlet weak var deviceNameLabel: UILabel!
     @IBOutlet weak var connectLab: UILabel!
     @IBOutlet weak var connectedImageView: UIImageView!
     @IBOutlet weak var pillowFoundHeadView: UIView!
+    @IBOutlet weak var disConnectBtn: UIButton!
     
     private var isSearch:Bool = false
     private var searchTimer:Timer?
     private let PillowDiscoveryCellIdentifier = "PillowDiscoveryCell"
+    private var currentPeer:WDPeripheal?
+    private var readRSSITimer:Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +57,18 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if let currentPeer = WDCentralManage.shareInstance.currentPeer {
+            self.currentPeer = currentPeer
+            self.currentPeer?.delegate = self
+            loadConnectedWDPeer(currentPeer)
+            startReadRSSI()
+        }
         self.perform(#selector(scan), with: nil, afterDelay: 0.2)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopRSSITimer()
     }
     
     //MARK:Bluetooth
@@ -64,7 +80,7 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
 
     
     //MARK:Search Animations
-    func startSearchAnimation() {
+    private func startSearchAnimation() {
         isSearch = true
         self.searchBtn.isUserInteractionEnabled = false
         self.pillowSearchView.isHidden = false
@@ -74,8 +90,8 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
         self.pillowSearchView.layer.add(self.setAnimationWithDuration(3.5), forKey: "rotationAnimation")
         self.pillowSearchViewYellow.layer.add(self.setAnimationWithDuration(4.5), forKey: "rotationAnimation")
         self.pillowSearchViewPurple.layer.add(self.setAnimationWithDuration(5.0), forKey: "rotationAnimation")
-        
-        searchTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kPillowSearchTimes), target: self, selector: #selector(stopSearch), userInfo: nil, repeats: true);
+        stopTimer()
+        searchTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kPillowSearchTimes), target: self, selector: #selector(stopSearch), userInfo: nil, repeats: true)
         
     }
     
@@ -85,7 +101,7 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
         self.stopTimer()
     }
     
-    func interrupt() {
+    private func interrupt() {
         isSearch = false
         self.searchBtn.isUserInteractionEnabled = true
         self.pillowSearchView.layer.removeAllAnimations()
@@ -107,11 +123,31 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
         self.searchAgainLab.text = "点击重试"
     }
     
-    func stopTimer() {
+    private func stopTimer() {
         if let currentTimer = searchTimer {
             currentTimer.invalidate()
         }
         searchTimer = nil
+    }
+    
+    private func stopRSSITimer() {
+        if let currentTimer = readRSSITimer {
+            currentTimer.invalidate()
+        }
+        readRSSITimer = nil
+    }
+    
+    private func startReadRSSI() {
+        if let _ = self.currentPeer {
+            stopRSSITimer()
+            readRSSITimer = Timer.scheduledTimer(timeInterval: TimeInterval(2), target: self, selector: #selector(readRSSI), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @objc private func readRSSI() {
+        if let currentPeer = self.currentPeer {
+            currentPeer.startReadRSSI()
+        }
     }
     
     func setAnimationWithDuration(_ duration:Double) -> CABasicAnimation {
@@ -124,6 +160,57 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
         return rotationAnimation
     }
     
+    private func loadConnectingDiscovery(_ discovery:WDDiscovery) {
+        currentPillowContainerView.isHidden = false
+        disConnectBtn.isEnabled = false
+        connectLab.text = "连接中"
+        deviceNameLabel.text = discovery.name
+        self.rssiLabel.isHidden = true
+        self.rssiDescriptorLabel.isHidden = true
+    }
+    
+    private func loadConnectedWDPeer(_ peer:WDPeripheal) {
+        currentPillowContainerView.isHidden = false
+        disConnectBtn.isEnabled = true
+        connectLab.text = "断开"
+        deviceNameLabel.text = peer.name
+        self.rssiLabel.isHidden = true
+        self.rssiDescriptorLabel.isHidden = true
+    }
+    
+    private func clearCurrentPeer() {
+        self.currentPillowContainerView.isHidden = true
+        
+    }
+    
+    private func loadRSSI(_ rssi:Int) {
+        if rssi < 0 {
+            self.rssiLabel.isHidden = false
+            self.rssiDescriptorLabel.isHidden = false
+            if rssi > -30 {
+                self.rssiLabel.text = "100%"
+            }else{
+                self.rssiLabel.text = "\(rssi + 130)%";
+            }
+            if rssi >= -70 {
+                self.rssiLabel.textColor = Colors.InsoleRssiLevelGreen()
+                self.rssiLevelImageView.image = UIImage.init(named: "icon_rssi_level_4")
+            }else if rssi < -70 && rssi >= -80 {
+                self.rssiLabel.textColor = Colors.InsoleRssiLevelYellow()
+                self.rssiLevelImageView.image = UIImage.init(named: "icon_rssi_level_3")
+            }else if rssi < -80 && rssi > -90 {
+                self.rssiLabel.textColor = Colors.InsoleRssiLevelYellow()
+                self.rssiLevelImageView.image = UIImage.init(named: "icon_rssi_level_2")
+            }else{
+                self.rssiLabel.textColor = Colors.InsoleRssiLevelRed()
+                self.rssiLevelImageView.image = UIImage.init(named: "icon_rssi_level_1")
+            }
+        } else {
+            self.rssiDescriptorLabel.isHidden = true
+            self.rssiLabel.isHidden = true
+        }
+    }
+    
     //MARK:UITableViewDelegate,UITableViewDatasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -133,44 +220,84 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:PillowDiscoveryCell = pillowSearchTableView.dequeueReusableCell(withIdentifier: PillowDiscoveryCellIdentifier, for: indexPath) as! PillowDiscoveryCell
         let discovery = WDCentralManage.shareInstance.discoveries[indexPath.row]
-        cell.loadByDevice(discovery)
+        cell.loadByDevice(discovery,at: indexPath)
         cell.loadRSSI(discovery.RSSI)
+        cell.delegate = self
         
         return cell
     }
     
     //MARK:Actions
     @IBAction func actionSearch(_ sender: UIButton) {
-        
+        startSearchAnimation()
+        WDCentralManage.shareInstance.scanWithConfiguration(WDCBConfigurationFactory.pillowConfiguration, duration: 15)
     }
     
     @IBAction func actionDisconnectCurrent(_ sender: UIButton) {
-        
+        stopRSSITimer()
+        WDCentralManage.shareInstance.disconnectCurrentPeer()
+        self.clearCurrentPeer()
+        startSearchAnimation()
+        WDCentralManage.shareInstance.scanWithConfiguration(WDCBConfigurationFactory.pillowConfiguration, duration: 15)
+    }
+    
+    //MARK:PillowDiscoveryCellDelegate
+    func connectDiscovery(_ discovery:WDDiscovery, at indexPath:IndexPath){
+        WDCentralManage.shareInstance.interruptScan()//停止搜索
+        interrupt()//停止搜索的动画
+        WDCentralManage.shareInstance.connect(discovery: discovery)
+        self.loadConnectingDiscovery(discovery)
+        //TODO 提示连接中,提示框不消失
+        self.pillowSearchTableView.reloadData()
     }
     
     //MARK:WDCentralManageDelegate
     
+    func scanTimeout() {
+        interrupt()
+    }
+    
     func discoverys(_ discoverys: [WDDiscovery]) {
-        //TODO 是否要自动连接下？
-//        for discovery in discoverys {
-//            if discovery.remotePeripheral.identifier.uuidString == "2B552FAC-F17E-4397-9E5F-D61B14B19FD5" {
-//                WDCentralManage.shareInstance.connect(discovery: discovery)
-//            }
-//        }
+        if let lastPeerUUIDStr = WDCentralManage.shareInstance.lastPeerUUIDStr() {
+            for discovery in discoverys {
+                if discovery.remotePeripheral.identifier.uuidString == lastPeerUUIDStr {
+                    WDCentralManage.shareInstance.connect(discovery: discovery)
+                    //TODO 提示自动连接
+                    break
+                }
+            }
+        }
         pillowSearchTableView.reloadData()
     }
     
     func didConnected(for peripheal: WDPeripheal) {
-//        peripheal.delegate = self
-        //TODO 展示连接上鞋垫后的界面及效果
+        peripheal.delegate = self
+        currentPeer = peripheal
+        self.loadConnectedWDPeer(peripheal)
+        //TODO 提示连接成功
+        self.pillowSearchTableView.reloadData()
     }
     
     func didDisConnected(for peripheal: WDPeripheal) {
-        //TODO 掉线后自动连接等操作
+        self.clearCurrentPeer()
     }
     
     func failConnected(for uuidStr: String) {
+        self.clearCurrentPeer()
+        //TODO 提示连接失败
+    }
+    
+    //MARK:WDPeripheralDelegate
+    
+    func didFoundCharacteristic(_ peripheral:WDPeripheal){
+        startReadRSSI()
+    }
+    
+    func wdPeripheral(_ peripheral:WDPeripheal, received receivedData:Data){
         
+    }
+    func wdPeripheral(_ peripheral:WDPeripheal, rssi:Int){
+        self.loadRSSI(rssi)
     }
     
     //MARK:other

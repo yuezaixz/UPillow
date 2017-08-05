@@ -67,11 +67,13 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     
     public var discoveries:[WDDiscovery] = []
     
-    public var currentPeer:WDPeripheal!
+    public var currentPeer:WDPeripheal?
     
     public weak var delegate: WDCentralManageDelegate?
     
     public var _connectingUUIDStr : String?
+    
+    public var _connectingPeripheral : CBPeripheral?
     
     public var _autoConnectUUIDStr : String?
     
@@ -194,6 +196,10 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
             return
         }
         
+        if let discoveryIndex = discoveries.index(of: discovery) {
+            discoveries.remove(at: discoveryIndex)
+        }
+        
         if let currentPeer = self.currentPeer {
             if currentPeer.identifier == discovery.remotePeripheral.identifier {
                 //同一个，不重复连接了
@@ -206,6 +212,7 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
         saveLastUUIDStr(discovery.remotePeripheral.identifier.uuidString, name: discovery.remotePeripheral.name ?? "", userId: 0)
         print("connect \(discovery.remotePeripheral.identifier)")
         _connectingUUIDStr = discovery.remotePeripheral.identifier.uuidString
+        _connectingPeripheral = discovery.remotePeripheral
         centralManager.connect(discovery.remotePeripheral, options: [CBConnectPeripheralOptionNotifyOnDisconnectionKey:true])
     }
     
@@ -249,9 +256,10 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         _connectingUUIDStr = nil
+        _connectingPeripheral = nil
         currentPeer = WDPeripheal.init(identifier: peripheral.identifier, peripheral: peripheral, configuration: _currentConfiguration)
-        delegate?.didConnected(for: currentPeer)
-        currentPeer.discoverServices()
+        delegate?.didConnected(for: currentPeer!)
+        currentPeer!.discoverServices()
     }
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
@@ -264,6 +272,7 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         delegate?.failConnected(for: _connectingUUIDStr ?? peripheral.identifier.uuidString)
         _connectingUUIDStr = nil
+        _connectingPeripheral = nil
     }
     
 }

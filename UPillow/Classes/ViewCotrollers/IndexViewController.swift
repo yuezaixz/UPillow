@@ -69,6 +69,7 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
         }
         animationTimer = nil
         status = .none
+        clearCircleColor()
     }
     
     @objc func loadingAnimation() {

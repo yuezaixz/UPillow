@@ -45,6 +45,16 @@ public class WDDiscovery :Equatable {
 public protocol WDPeriphealDelegate: class {
     func didFoundCharacteristic(_ peripheral:WDPeripheal)
     func wdPeripheral(_ peripheral:WDPeripheal, received receivedData:Data)
+    func wdPeripheral(_ peripheral:WDPeripheal, rssi:Int)
+}
+
+extension WDPeriphealDelegate {
+    func wdPeripheral(_ peripheral:WDPeripheal, received receivedData:Data){
+        
+    }
+    func wdPeripheral(_ peripheral:WDPeripheal, rssi:Int){
+        
+    }
 }
 
 public class WDPeripheal:NSObject,CBPeripheralDelegate {
@@ -108,6 +118,14 @@ public class WDPeripheal:NSObject,CBPeripheralDelegate {
         self.peripheral = peripheral
         self.peripheral.delegate = self
         self.configuration = configuration
+    }
+    
+    public func startReadRSSI() {
+        readRSSI()
+    }
+    
+    private func readRSSI() {
+        self.peripheral.readRSSI()
     }
     
     // MARK: Internal Functions
@@ -177,5 +195,9 @@ public class WDPeripheal:NSObject,CBPeripheralDelegate {
             return
         }
         self.delegate?.wdPeripheral(self, received: characteristic.value!)
+    }
+    
+    public func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
+        self.delegate?.wdPeripheral(self, rssi: RSSI.intValue)
     }
 }

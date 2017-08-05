@@ -7,6 +7,9 @@
 //
 
 import UIKit
+public protocol PillowDiscoveryCellDelegate: class {
+    func connectDiscovery(_ discovery:WDDiscovery, at indexPath:IndexPath)
+}
 
 public class PillowDiscoveryCell :UITableViewCell {
     
@@ -16,7 +19,11 @@ public class PillowDiscoveryCell :UITableViewCell {
     @IBOutlet weak var connectLab: UILabel!
     @IBOutlet weak var rssiDescriperLab: UILabel!
     
+    public weak var delegate:PillowDiscoveryCellDelegate?
+    
     private var isConnected_:Bool = false
+    private var _currentDiscovery:WDDiscovery?
+    private var _currentIndexPath:IndexPath!
     
 //    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 //        super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -35,7 +42,7 @@ public class PillowDiscoveryCell :UITableViewCell {
 //        super.setSelected(selected, animated: animated)
     }
     
-    func loadByDevice(_ device:WDDiscovery) {
+    func loadByDevice(_ device:WDDiscovery, at indexPath:IndexPath) {
         self.connectLab.layer.borderColor = UIColor.lightGray.cgColor
         self.rssiLab.isHidden = true
         self.rssiDescriperLab.isHidden = true
@@ -44,7 +51,8 @@ public class PillowDiscoveryCell :UITableViewCell {
         
         self.deviceNameLab.text = device.name
         
-        
+        _currentDiscovery = device
+        _currentIndexPath = indexPath
     }
     
     func loadRSSI(_ rssi:Int) {
@@ -72,6 +80,12 @@ public class PillowDiscoveryCell :UITableViewCell {
         } else {
             self.rssiLab.isHidden = true
             self.rssiDescriperLab.isHidden = true
+        }
+    }
+    
+    @IBAction func actionConnect(_ sender: UIButton) {
+        if let currentDiscovery = self._currentDiscovery {
+            delegate?.connectDiscovery(currentDiscovery, at: _currentIndexPath)
         }
     }
     
