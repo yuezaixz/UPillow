@@ -26,7 +26,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bAy-Hh-Xcr"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="设置" id="7zH-Zk-qpU"/>
+                    <tabBarItem key="tabBarItem" title="设置" image="icon_tab_setting" id="7zH-Zk-qpU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="amY-qe-f4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,7 +42,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="e69-WW-9RP"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="健康" id="eMX-u0-S56"/>
+                    <tabBarItem key="tabBarItem" title="健康" image="icon_tab_health" id="eMX-u0-S56"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8IA-9o-rFl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -58,7 +58,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gIR-Fd-N8B"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="我的" id="2pw-oR-CME"/>
+                    <tabBarItem key="tabBarItem" title="我的" image="icon_tab_my" id="2pw-oR-CME"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1L-Rc-60Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -501,7 +501,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JFc-29-f2m"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="首页" id="FEe-Hb-D5v"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="icon_tab_home" id="FEe-Hb-D5v"/>
                     <connections>
                         <outlet property="autoConnectView" destination="TL3-iU-SFQ" id="g4z-bj-aIa"/>
                         <outletCollection property="circleViews" destination="zUN-fF-H2h" collectionClass="NSMutableArray" id="beO-5B-BPh"/>
@@ -1101,6 +1101,10 @@
         <image name="icon_pillow_search" width="50" height="50"/>
         <image name="icon_rssi_level_1" width="27" height="19"/>
         <image name="icon_rssi_level_4" width="27" height="19"/>
+        <image name="icon_tab_health" width="18" height="18"/>
+        <image name="icon_tab_home" width="18" height="20"/>
+        <image name="icon_tab_my" width="18" height="20"/>
+        <image name="icon_tab_setting" width="16" height="17"/>
         <image name="rm_insole_connect_center_circle" width="100" height="99"/>
         <image name="rm_insole_search_img1" width="138" height="150"/>
         <image name="rm_insole_search_img2" width="150" height="150"/>
