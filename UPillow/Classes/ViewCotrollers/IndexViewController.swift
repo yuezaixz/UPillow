@@ -43,8 +43,13 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.perform(#selector(autoConnect), with: nil, afterDelay: 0.5)
-        self.pleaseWait(txt: "自动连接中")
+        if let currentPeer = WDCentralManage.shareInstance.currentPeer {
+            self.loadCurrentPeer(currentPeer)
+        } else{
+            autoConnectView.isHidden = false
+            self.perform(#selector(autoConnect), with: nil, afterDelay: 0.5)
+            self.pleaseWait(txt: "自动连接中")
+        }
     }
     
     @objc func autoConnect() {
@@ -52,6 +57,11 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
             startAnimation()
             WDCentralManage.shareInstance.autoConnect(with: WDCBConfigurationFactory.pillowConfiguration, for: lastConnectUUIDStr, duration:15)
         }
+    }
+    
+    func loadCurrentPeer(_ peer:WDPeripheal) {
+        autoConnectView.isHidden = true
+        //TODO 加载当前连接的鞋垫
     }
     
     // MARK: circle animation
@@ -119,6 +129,7 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
         peripheal.delegate = self
         stopAnimation()
         self.clearAllNotice()
+        self.loadCurrentPeer(peripheal)
         self.noticeSuccess("连接成功", autoClear: true, autoClearTime: 2)
     }
     
