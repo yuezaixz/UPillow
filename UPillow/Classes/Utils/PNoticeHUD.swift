@@ -160,9 +160,10 @@ class SwiftNotice: NSObject {
     
     @discardableResult
     static func wait(_ imageNames: Array<UIImage> = Array<UIImage>(), timeInterval: Int = 0, txt: String = "") -> UIWindow {
-        let frame = CGRect(x: 0, y: 0, width: 78, height: 78)
+        let frame = CGRect(x: (UIScreen.main.bounds.width-78)/2, y: (UIScreen.main.bounds.height-78)/2, width: 78, height: 78)
         let window = UIWindow()
         window.backgroundColor = UIColor.clear
+        window.isUserInteractionEnabled = true
         let mainView = UIView()
         mainView.layer.cornerRadius = 12
         mainView.backgroundColor = UIColor(red:0, green:0, blue:0, alpha: 0.8)
@@ -190,7 +191,7 @@ class SwiftNotice: NSObject {
                 mainView.addSubview(ai)
             } else {
                 let ai = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
-                ai.frame = CGRect(x: 15, y: 15, width: 36, height: 36)
+                ai.frame = CGRect(x: 21, y: 15, width: 36, height: 36)
                 ai.startAnimating()
                 mainView.addSubview(ai)
                 
@@ -204,7 +205,7 @@ class SwiftNotice: NSObject {
             }
         }
         
-        window.frame = frame
+        window.frame = UIScreen.main.bounds
         mainView.frame = frame
         window.center = rv!.center
         
