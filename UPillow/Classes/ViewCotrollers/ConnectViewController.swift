@@ -35,7 +35,6 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
     @IBOutlet weak var disConnectBtn: UIButton!
     
     private var isSearch:Bool = false
-    private var searchTimer:Timer?
     private let PillowDiscoveryCellIdentifier = "PillowDiscoveryCell"
     private var currentPeer:WDPeripheal?
     private var readRSSITimer:Timer?
@@ -74,8 +73,7 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
     //MARK:Bluetooth
     @objc private func scan() {
         startSearchAnimation()
-        WDCentralManage.shareInstance.scanWithConfiguration(WDCBConfigurationFactory.pillowConfiguration, duration: 15)
-        
+        WDCentralManage.shareInstance.scanWithConfiguration(WDCBConfigurationFactory.pillowConfiguration, duration: 30)
     }
 
     
@@ -90,15 +88,6 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
         self.pillowSearchView.layer.add(self.setAnimationWithDuration(3.5), forKey: "rotationAnimation")
         self.pillowSearchViewYellow.layer.add(self.setAnimationWithDuration(4.5), forKey: "rotationAnimation")
         self.pillowSearchViewPurple.layer.add(self.setAnimationWithDuration(5.0), forKey: "rotationAnimation")
-        stopTimer()
-        searchTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kPillowSearchTimes), target: self, selector: #selector(stopSearch), userInfo: nil, repeats: true)
-        
-    }
-    
-    @objc func stopSearch() {
-        //TODO 停止搜索
-        
-        self.stopTimer()
     }
     
     private func interrupt() {
@@ -107,7 +96,6 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
         self.pillowSearchView.layer.removeAllAnimations()
         self.pillowSearchViewYellow.layer.removeAllAnimations()
         self.pillowSearchViewPurple.layer.removeAllAnimations()
-        self.stopTimer()
         self.searchAgainLab.text = "点击重试"
         
         self.pillowSearchView.isHidden = true
@@ -116,18 +104,11 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
         self.pillowStopSearchView.isHidden = false
         
         if WDCentralManage.shareInstance.bluetoothState == .poweredOff {
-            //TODO 未连接的提示
+            self.noticeError("蓝牙开关未开启", autoClear: true, autoClearTime: 2)
         } else if let _ = WDCentralManage.shareInstance.currentPeer, WDCentralManage.shareInstance.discoveries.count > 0 {
             //TODO 未连接
         }
         self.searchAgainLab.text = "点击重试"
-    }
-    
-    private func stopTimer() {
-        if let currentTimer = searchTimer {
-            currentTimer.invalidate()
-        }
-        searchTimer = nil
     }
     
     private func stopRSSITimer() {
@@ -247,7 +228,8 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
         interrupt()//停止搜索的动画
         WDCentralManage.shareInstance.connect(discovery: discovery)
         self.loadConnectingDiscovery(discovery)
-        //TODO 提示连接中,提示框不消失
+        
+        self.pleaseWait(txt:"连接中")
         self.pillowSearchTableView.reloadData()
     }
     
@@ -262,7 +244,7 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
             for discovery in discoverys {
                 if discovery.remotePeripheral.identifier.uuidString == lastPeerUUIDStr {
                     WDCentralManage.shareInstance.connect(discovery: discovery)
-                    //TODO 提示自动连接
+                    self.pleaseWait(txt:"自动连接中")
                     break
                 }
             }
@@ -274,17 +256,22 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
         peripheal.delegate = self
         currentPeer = peripheal
         self.loadConnectedWDPeer(peripheal)
-        //TODO 提示连接成功
+        self.clearAllNotice()
+        self.noticeSuccess("连接成功", autoClear: true, autoClearTime: 2)
         self.pillowSearchTableView.reloadData()
     }
     
     func didDisConnected(for peripheal: WDPeripheal) {
         self.clearCurrentPeer()
+        self.clearAllNotice()
+        self.noticeError("断开连接", autoClear: true, autoClearTime: 2)
     }
     
     func failConnected(for uuidStr: String) {
         self.clearCurrentPeer()
-        //TODO 提示连接失败
+        
+        self.clearAllNotice()
+        self.noticeError("连接失败", autoClear: true, autoClearTime: 2)
     }
     
     //MARK:WDPeripheralDelegate

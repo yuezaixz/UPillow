@@ -44,6 +44,7 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.perform(#selector(autoConnect), with: nil, afterDelay: 0.5)
+        self.pleaseWait(txt: "自动连接中")
     }
     
     @objc func autoConnect() {
@@ -117,15 +118,19 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     func didConnected(for peripheal: WDPeripheal) {
         peripheal.delegate = self
         stopAnimation()
-        //TODO 展示连接上鞋垫后的界面及效果
+        self.clearAllNotice()
+        self.noticeSuccess("连接成功", autoClear: true, autoClearTime: 2)
     }
     
     func didDisConnected(for peripheal: WDPeripheal) {
-        //TODO 掉线后自动连接等操作
+        self.clearAllNotice()
+        self.noticeError("断开连接", autoClear: true, autoClearTime: 2)
     }
     
     func failConnected(for uuidStr: String) {
         stopAnimation()
+        self.clearAllNotice()
+        self.noticeError("连接失败", autoClear: true, autoClearTime: 2)
     }
     
     func autoConnectTimeout(for uuidStr: String) {
