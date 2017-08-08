@@ -19,6 +19,7 @@
 		A617EC111F345D140017A7E8 /* WDCentralManageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A617EC101F345D140017A7E8 /* WDCentralManageState.swift */; };
 		A61B50DF1F347833003FBE9D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61B50DE1F347833003FBE9D /* Colors.swift */; };
 		A6662BD51F380CAA00691E1B /* PNoticeHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6662BD41F380CAA00691E1B /* PNoticeHUD.swift */; };
+		A6662BD71F3999E000691E1B /* PRedShadeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6662BD61F3999E000691E1B /* PRedShadeButton.swift */; };
 		A6809A3E1F34744800089E7A /* PillowDiscoveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */; };
 		A6DD6EC01F30801F0063B562 /* WDCentralManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EBF1F30801F0063B562 /* WDCentralManage.swift */; };
 		A6DD6EC21F30C4C20063B562 /* WDCBConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EC11F30C4C20063B562 /* WDCBConfiguration.swift */; };
@@ -43,6 +44,7 @@
 		A617EC101F345D140017A7E8 /* WDCentralManageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCentralManageState.swift; sourceTree = "<group>"; };
 		A61B50DE1F347833003FBE9D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A6662BD41F380CAA00691E1B /* PNoticeHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNoticeHUD.swift; sourceTree = "<group>"; };
+		A6662BD61F3999E000691E1B /* PRedShadeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRedShadeButton.swift; sourceTree = "<group>"; };
 		A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillowDiscoveryCell.swift; sourceTree = "<group>"; };
 		A6DD6EBF1F30801F0063B562 /* WDCentralManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCentralManage.swift; sourceTree = "<group>"; };
 		A6DD6EC11F30C4C20063B562 /* WDCBConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCBConfiguration.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */,
+				A6662BD61F3999E000691E1B /* PRedShadeButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				A60B14331F2F048F00675C6E /* AppDelegate.swift in Sources */,
 				A61B50DF1F347833003FBE9D /* Colors.swift in Sources */,
 				A617EC0D1F340EC30017A7E8 /* ConnectViewController.swift in Sources */,
+				A6662BD71F3999E000691E1B /* PRedShadeButton.swift in Sources */,
 				A6662BD51F380CAA00691E1B /* PNoticeHUD.swift in Sources */,
 				A6DD6EC21F30C4C20063B562 /* WDCBConfiguration.swift in Sources */,
 				A6DD6EC01F30801F0063B562 /* WDCentralManage.swift in Sources */,

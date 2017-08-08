@@ -24,6 +24,8 @@ enum RMHomeStepCountStatus {
 class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealDelegate,PDataHandleDelegate {
     
     @IBOutlet weak var autoConnectView: UIView!
+    @IBOutlet weak var buyInfoContainerView: UIView!
+    private var _redShadeButton : PRedShadeButton!
     
     @IBOutlet var circleViews: [UIView]!
     
@@ -43,12 +45,34 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        //头部购买按钮初始化
+        _redShadeButton = PRedShadeButton.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: self.buyInfoContainerView.bounds.size.height), text: "购买枕头")
+        _redShadeButton.addTarget(self, action: #selector(actionBuy), for: .touchUpInside)
+        
+        self.buyInfoContainerView.addSubview(_redShadeButton)
+        
         if let currentPeer = WDCentralManage.shareInstance.currentPeer {
             self.loadCurrentPeer(currentPeer)
-        } else{
+            self.buyInfoContainerView.isHidden = true
+        } else if let _ = WDCentralManage.shareInstance.lastPeerUUIDStr(){
+            self.buyInfoContainerView.isHidden = true
             autoConnectView.isHidden = false
             self.perform(#selector(autoConnect), with: nil, afterDelay: 0.5)
             self.pleaseWait(txt: "自动连接中")
+        } else {
+            self.buyInfoContainerView.isHidden = false
+            
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.status == .connecting {//离开的时候，如果还在连接，都停止搜索并把动画给停了
+            WDCentralManage.shareInstance.interruptScan()
+            loadingIndex = 0
+            clearCircleColor()
+            stopAnimation()
         }
     }
     
@@ -120,6 +144,11 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     @IBAction func tapConnectGestureAction(_ sender: UITapGestureRecognizer) {
         if sender.state == UIGestureRecognizerState.ended {
             print("进入连接页面")
+        }
+    }
+    @objc private func actionBuy() {
+        if let url = URL.init(string: "http://www.podoon.com") {
+            UIApplication.shared.openURL(url)
         }
     }
     

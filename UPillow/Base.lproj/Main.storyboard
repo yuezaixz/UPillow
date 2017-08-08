@@ -493,17 +493,27 @@
                                     <outletCollection property="gestureRecognizers" destination="ngk-1s-19f" appends="YES" id="xDu-EO-3XT"/>
                                 </connections>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CuG-eP-hp9">
+                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Ud7-Ah-D3V"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.10588235294117647" green="0.078431372549019607" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="CuG-eP-hp9" firstAttribute="leading" secondItem="JFc-29-f2m" secondAttribute="leading" id="1Zk-CV-Jrw"/>
                             <constraint firstItem="TL3-iU-SFQ" firstAttribute="centerX" secondItem="JFc-29-f2m" secondAttribute="centerX" id="39Y-Rn-t1O"/>
                             <constraint firstItem="TL3-iU-SFQ" firstAttribute="centerY" secondItem="JFc-29-f2m" secondAttribute="centerY" id="6h8-gE-912"/>
+                            <constraint firstItem="CuG-eP-hp9" firstAttribute="top" secondItem="JFc-29-f2m" secondAttribute="top" id="9Ct-GU-ErZ"/>
+                            <constraint firstItem="CuG-eP-hp9" firstAttribute="trailing" secondItem="JFc-29-f2m" secondAttribute="trailing" id="R0I-nu-ttd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JFc-29-f2m"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="首页" image="icon_tab_home" id="FEe-Hb-D5v"/>
                     <connections>
                         <outlet property="autoConnectView" destination="TL3-iU-SFQ" id="g4z-bj-aIa"/>
+                        <outlet property="buyInfoContainerView" destination="CuG-eP-hp9" id="awR-xA-Fty"/>
                         <outletCollection property="circleViews" destination="zUN-fF-H2h" collectionClass="NSMutableArray" id="beO-5B-BPh"/>
                         <outletCollection property="circleViews" destination="9O1-S0-LHT" collectionClass="NSMutableArray" id="jJt-24-AdX"/>
                         <outletCollection property="circleViews" destination="TFY-p1-clU" collectionClass="NSMutableArray" id="UKc-IL-nQC"/>
