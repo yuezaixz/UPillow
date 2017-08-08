@@ -65,16 +65,16 @@ public class PillowDiscoveryCell :UITableViewCell {
                 self.rssiLab.text = "\(rssi + 130)%";
             }
             if rssi >= -70 {
-                self.rssiLab.textColor = Colors.InsoleRssiLevelGreen()
+                self.rssiLab.textColor = Specs.color.insoleRSSILevelGreen
                 self.rssiLevelImageView.image = UIImage.init(named: "icon_rssi_level_4")
             }else if rssi < -70 && rssi >= -80 {
-                self.rssiLab.textColor = Colors.InsoleRssiLevelYellow()
+                self.rssiLab.textColor = Specs.color.insoleRSSILevelYellow
                 self.rssiLevelImageView.image = UIImage.init(named: "icon_rssi_level_3")
             }else if rssi < -80 && rssi > -90 {
-                self.rssiLab.textColor = Colors.InsoleRssiLevelYellow()
+                self.rssiLab.textColor = Specs.color.insoleRSSILevelYellow
                 self.rssiLevelImageView.image = UIImage.init(named: "icon_rssi_level_2")
             }else{
-                self.rssiLab.textColor = Colors.InsoleRssiLevelRed()
+                self.rssiLab.textColor = Specs.color.insoleRSSILevelRed
                 self.rssiLevelImageView.image = UIImage.init(named: "icon_rssi_level_1")
             }
         } else {

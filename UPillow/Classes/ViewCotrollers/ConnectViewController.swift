@@ -174,16 +174,16 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
                 self.rssiLabel.text = "\(rssi + 130)%";
             }
             if rssi >= -70 {
-                self.rssiLabel.textColor = Colors.InsoleRssiLevelGreen()
+                self.rssiLabel.textColor = Specs.color.insoleRSSILevelGreen
                 self.rssiLevelImageView.image = UIImage.init(named: "icon_rssi_level_4")
             }else if rssi < -70 && rssi >= -80 {
-                self.rssiLabel.textColor = Colors.InsoleRssiLevelYellow()
+                self.rssiLabel.textColor = Specs.color.insoleRSSILevelYellow
                 self.rssiLevelImageView.image = UIImage.init(named: "icon_rssi_level_3")
             }else if rssi < -80 && rssi > -90 {
-                self.rssiLabel.textColor = Colors.InsoleRssiLevelYellow()
+                self.rssiLabel.textColor = Specs.color.insoleRSSILevelYellow
                 self.rssiLevelImageView.image = UIImage.init(named: "icon_rssi_level_2")
             }else{
-                self.rssiLabel.textColor = Colors.InsoleRssiLevelRed()
+                self.rssiLabel.textColor = Specs.color.insoleRSSILevelRed
                 self.rssiLevelImageView.image = UIImage.init(named: "icon_rssi_level_1")
             }
         } else {

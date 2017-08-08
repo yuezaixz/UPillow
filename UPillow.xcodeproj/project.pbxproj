@@ -17,7 +17,12 @@
 		A617EC0D1F340EC30017A7E8 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A617EC0C1F340EC30017A7E8 /* ConnectViewController.swift */; };
 		A617EC0F1F345C820017A7E8 /* CBCentralManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A617EC0E1F345C820017A7E8 /* CBCentralManager+Extensions.swift */; };
 		A617EC111F345D140017A7E8 /* WDCentralManageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A617EC101F345D140017A7E8 /* WDCentralManageState.swift */; };
-		A61B50DF1F347833003FBE9D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61B50DE1F347833003FBE9D /* Colors.swift */; };
+		A65A30931F39B02500C48EB6 /* SwitchSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A30921F39B02500C48EB6 /* SwitchSettingCell.swift */; };
+		A65A30951F39B07800C48EB6 /* BaseSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A30941F39B07800C48EB6 /* BaseSettingCell.swift */; };
+		A65A30981F39B0BA00C48EB6 /* Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A30971F39B0BA00C48EB6 /* Spec.swift */; };
+		A65A309A1F39B0F300C48EB6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A30991F39B0F300C48EB6 /* UIColor+Extension.swift */; };
+		A65A309C1F39B27500C48EB6 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A309B1F39B27500C48EB6 /* UIView+Extension.swift */; };
+		A65A309E1F39B3E800C48EB6 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A309D1F39B3E800C48EB6 /* Bundle+Extensions.swift */; };
 		A6662BD51F380CAA00691E1B /* PNoticeHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6662BD41F380CAA00691E1B /* PNoticeHUD.swift */; };
 		A6662BD71F3999E000691E1B /* PRedShadeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6662BD61F3999E000691E1B /* PRedShadeButton.swift */; };
 		A6809A3E1F34744800089E7A /* PillowDiscoveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */; };
@@ -42,7 +47,12 @@
 		A617EC0C1F340EC30017A7E8 /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		A617EC0E1F345C820017A7E8 /* CBCentralManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBCentralManager+Extensions.swift"; sourceTree = "<group>"; };
 		A617EC101F345D140017A7E8 /* WDCentralManageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCentralManageState.swift; sourceTree = "<group>"; };
-		A61B50DE1F347833003FBE9D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		A65A30921F39B02500C48EB6 /* SwitchSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchSettingCell.swift; sourceTree = "<group>"; };
+		A65A30941F39B07800C48EB6 /* BaseSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingCell.swift; sourceTree = "<group>"; };
+		A65A30971F39B0BA00C48EB6 /* Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spec.swift; sourceTree = "<group>"; };
+		A65A30991F39B0F300C48EB6 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		A65A309B1F39B27500C48EB6 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		A65A309D1F39B3E800C48EB6 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		A6662BD41F380CAA00691E1B /* PNoticeHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNoticeHUD.swift; sourceTree = "<group>"; };
 		A6662BD61F3999E000691E1B /* PRedShadeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRedShadeButton.swift; sourceTree = "<group>"; };
 		A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillowDiscoveryCell.swift; sourceTree = "<group>"; };
@@ -117,6 +127,7 @@
 		A60B14441F3017FC00675C6E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A65A30961F39B0AF00C48EB6 /* Misc */,
 				A61B50DD1F347826003FBE9D /* Utils */,
 				A6DD6EC81F3308A60063B562 /* Extensions */,
 				A6DD6EBE1F307CF20063B562 /* WDBluetoothKit */,
@@ -131,6 +142,8 @@
 			children = (
 				A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */,
 				A6662BD61F3999E000691E1B /* PRedShadeButton.swift */,
+				A65A30921F39B02500C48EB6 /* SwitchSettingCell.swift */,
+				A65A30941F39B07800C48EB6 /* BaseSettingCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -138,10 +151,17 @@
 		A61B50DD1F347826003FBE9D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A61B50DE1F347833003FBE9D /* Colors.swift */,
 				A6662BD41F380CAA00691E1B /* PNoticeHUD.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A65A30961F39B0AF00C48EB6 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				A65A30971F39B0BA00C48EB6 /* Spec.swift */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 		A6DD6EBE1F307CF20063B562 /* WDBluetoothKit */ = {
@@ -162,6 +182,9 @@
 			children = (
 				A6DD6EC91F3308BA0063B562 /* String+Extensions.swift */,
 				A617EC0E1F345C820017A7E8 /* CBCentralManager+Extensions.swift */,
+				A65A30991F39B0F300C48EB6 /* UIColor+Extension.swift */,
+				A65A309B1F39B27500C48EB6 /* UIView+Extension.swift */,
+				A65A309D1F39B3E800C48EB6 /* Bundle+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -298,20 +321,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				A60B14351F2F048F00675C6E /* IndexViewController.swift in Sources */,
+				A65A30951F39B07800C48EB6 /* BaseSettingCell.swift in Sources */,
 				A605C5EE1F340439002157F8 /* WDCBConfigurationFactory.swift in Sources */,
 				A6DD6ECA1F3308BA0063B562 /* String+Extensions.swift in Sources */,
 				A6809A3E1F34744800089E7A /* PillowDiscoveryCell.swift in Sources */,
 				A6DD6EC41F30C9FC0063B562 /* WDPeripheal.swift in Sources */,
+				A65A30931F39B02500C48EB6 /* SwitchSettingCell.swift in Sources */,
+				A65A30981F39B0BA00C48EB6 /* Spec.swift in Sources */,
 				A617EC0F1F345C820017A7E8 /* CBCentralManager+Extensions.swift in Sources */,
 				A6DD6EC71F32FB7A0063B562 /* PDataHandle.swift in Sources */,
 				A60B14331F2F048F00675C6E /* AppDelegate.swift in Sources */,
-				A61B50DF1F347833003FBE9D /* Colors.swift in Sources */,
+				A65A309E1F39B3E800C48EB6 /* Bundle+Extensions.swift in Sources */,
 				A617EC0D1F340EC30017A7E8 /* ConnectViewController.swift in Sources */,
 				A6662BD71F3999E000691E1B /* PRedShadeButton.swift in Sources */,
 				A6662BD51F380CAA00691E1B /* PNoticeHUD.swift in Sources */,
 				A6DD6EC21F30C4C20063B562 /* WDCBConfiguration.swift in Sources */,
 				A6DD6EC01F30801F0063B562 /* WDCentralManage.swift in Sources */,
 				A617EC111F345D140017A7E8 /* WDCentralManageState.swift in Sources */,
+				A65A309C1F39B27500C48EB6 /* UIView+Extension.swift in Sources */,
+				A65A309A1F39B0F300C48EB6 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

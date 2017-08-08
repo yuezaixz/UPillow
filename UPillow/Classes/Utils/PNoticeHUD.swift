@@ -199,7 +199,7 @@ class SwiftNotice: NSObject {
                 txtLabel.textAlignment = .center
                 txtLabel.text = txt
                 txtLabel.textColor = UIColor.white
-                txtLabel.font = UIFont.systemFont(ofSize: 13)
+                txtLabel.font = Specs.font.regular
                 
                 mainView.addSubview(txtLabel)
             }
@@ -240,7 +240,7 @@ class SwiftNotice: NSObject {
         let label = UILabel()
         label.text = text
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 13)
+        label.font = Specs.font.regular
         label.textAlignment = NSTextAlignment.center
         label.textColor = UIColor.white
         let size = label.sizeThatFits(CGSize(width: UIScreen.main.bounds.width-82, height: CGFloat.greatestFiniteMagnitude))
@@ -297,7 +297,7 @@ class SwiftNotice: NSObject {
         mainView.addSubview(checkmarkView)
         
         let label = UILabel(frame: CGRect(x: 0, y: 60, width: 90, height: 16))
-        label.font = UIFont.systemFont(ofSize: 13)
+        label.font = Specs.font.regular
         label.textColor = UIColor.white
         label.text = text
         label.textAlignment = NSTextAlignment.center
