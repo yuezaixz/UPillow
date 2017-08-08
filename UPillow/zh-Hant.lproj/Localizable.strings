@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  UPillow
+
+  Created by 吴迪玮 on 2017/8/8.
+  Copyright © 2017年 Podoon. All rights reserved.
+*/
+
+"1 Day" = "1 天";
+"%d Days" = "%d 天";
