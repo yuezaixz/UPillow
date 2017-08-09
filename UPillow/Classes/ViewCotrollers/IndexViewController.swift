@@ -147,7 +147,7 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
         }
     }
     @objc private func actionBuy() {
-        guard let url = URL(string: link) else { return }
+        guard let url = URL(string: "http://www.podoon.com") else { return }
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: [:])
         } else {
