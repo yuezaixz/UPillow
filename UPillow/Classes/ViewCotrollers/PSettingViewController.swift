@@ -27,6 +27,23 @@ class PSettingViewController: UIViewController {
     
     @IBOutlet weak var settingTableView: UITableView!
     
+    private struct LayoutConstants {
+        static let versionViewHeight: CGFloat = 64
+    }
+    
+    private let versionView: UIView = {
+        let label = UILabel()
+        label.textColor = Specs.color.blueGray
+        label.font = Specs.font.smallBold
+        label.text = "Ver \(Bundle.main.version) © Podoon"
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: LayoutConstants.versionViewHeight))
+        label.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: LayoutConstants.versionViewHeight)
+        label.textAlignment = .center
+        view.addSubview(label)
+        
+        return view
+    }()
+    
     /// Datasource
     fileprivate let data = [
         [
@@ -68,6 +85,7 @@ class PSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTableView.register(BaseSettingCell.self, forCellReuseIdentifier: BaseSettingCell.identifier)
+        settingTableView.tableFooterView = versionView
         
         title = Bundle.main.name
         
