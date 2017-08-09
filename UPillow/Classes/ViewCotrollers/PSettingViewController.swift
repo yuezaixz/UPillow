@@ -171,10 +171,16 @@ extension PSettingViewController: UITableViewDataSource, UITableViewDelegate {
             // SafariViewController only support HTTP protocol
             if link.hasPrefix("http") {
                 let safari = SFSafariViewController(url: url)
-                safari.preferredControlTintColor = Specs.color.tint
+                if #available(iOS 10.0, *) {
+                    safari.preferredControlTintColor = Specs.color.tint
+                }
                 present(safari, animated: true)
             } else {
-                UIApplication.shared.open(url, options: [:])
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:])
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
             }
         }
     }
