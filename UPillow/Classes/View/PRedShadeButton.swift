@@ -10,7 +10,10 @@ import UIKit
 
 class PRedShadeButton: UIView {
     
-    var redShadeButton:UIButton!
+    var redShadeButton:UIButton = {
+        var button:UIButton = UIButton.init()
+        return button
+    }()
     
     private var _gradientLayer:CAGradientLayer!
     
@@ -24,7 +27,7 @@ class PRedShadeButton: UIView {
     }
     
     func loadButtonTitle(_ title:String, frame:CGRect) {
-        redShadeButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+        redShadeButton.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         redShadeButton.setTitle(title, for: .normal)
         self.redShadeButton.contentHorizontalAlignment = .center
         self.addSubview(self.redShadeButton)

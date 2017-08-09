@@ -6,5 +6,15 @@
   Copyright © 2017年 Podoon. All rights reserved.
 */
 
+"Guide" = "Guide";
+"Feedback" = "Feedback";
+"Misc" = "Misc";
+"Settings" = "Settings";
+
+"Video" = "Video";
+"Website" = "Website";
+"Email" = "Email";
+"Rate" = "Rate";
+
 "1 Day" = "1 Day";
 "%d Days" = "%d Days";

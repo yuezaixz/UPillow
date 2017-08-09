@@ -35,7 +35,6 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
     @IBOutlet weak var disConnectBtn: UIButton!
     
     private var isSearch:Bool = false
-    private let PillowDiscoveryCellIdentifier = "PillowDiscoveryCell"
     private var currentPeer:WDPeripheal?
     private var readRSSITimer:Timer?
     
@@ -199,7 +198,7 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:PillowDiscoveryCell = pillowSearchTableView.dequeueReusableCell(withIdentifier: PillowDiscoveryCellIdentifier, for: indexPath) as! PillowDiscoveryCell
+        let cell:PillowDiscoveryCell = pillowSearchTableView.dequeueReusableCell(withIdentifier: PillowDiscoveryCell.identifier, for: indexPath) as! PillowDiscoveryCell
         let discovery = WDCentralManage.shareInstance.discoveries[indexPath.row]
         cell.loadByDevice(discovery,at: indexPath)
         cell.loadRSSI(discovery.RSSI)

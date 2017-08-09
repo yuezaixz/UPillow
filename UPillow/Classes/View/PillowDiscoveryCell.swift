@@ -13,6 +13,8 @@ public protocol PillowDiscoveryCellDelegate: class {
 
 public class PillowDiscoveryCell :UITableViewCell {
     
+    static let identifier = "PillowDiscoveryCell"
+    
     @IBOutlet weak var rssiLab: UILabel!
     @IBOutlet weak var rssiLevelImageView: UIImageView!
     @IBOutlet weak var deviceNameLab: UILabel!
@@ -25,18 +27,9 @@ public class PillowDiscoveryCell :UITableViewCell {
     private var _currentDiscovery:WDDiscovery?
     private var _currentIndexPath:IndexPath!
     
-//    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        self.connectLab.layer.borderColor = UIColor.lightGray.cgColor
-//    }
-    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-//    public override func awakeFromNib() {
-//        self.connectLab.layer.borderColor = UIColor.lightGray.cgColor
-//    }
     
     public override func setSelected(_ selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)

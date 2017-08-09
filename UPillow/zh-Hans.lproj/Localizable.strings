@@ -5,6 +5,15 @@
   Created by 吴迪玮 on 2017/8/8.
   Copyright © 2017年 Podoon. All rights reserved.
 */
+"Guide" = "如何使用";
+"Feedback" = "反馈";
+"Misc" = "综合";
+"Settings" = "偏好设置";
+
+"Video" = "视频";
+"Website" = "网站";
+"Email" = "邮件";
+"Rate" = "去 App Store 评分";
 
 "1 Day" = "1 天";
 "%d Days" = "%d 天";

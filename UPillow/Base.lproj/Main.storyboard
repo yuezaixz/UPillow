@@ -19,14 +19,33 @@
         <!--设置-->
         <scene sceneID="9AQ-wm-PxU">
             <objects>
-                <viewController id="2cW-jH-iXJ" sceneMemberID="viewController">
+                <viewController id="2cW-jH-iXJ" customClass="PSettingViewController" customModule="UPillow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="CjK-vM-zvt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5wt-Pu-4bV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2cW-jH-iXJ" id="ydy-L7-6AI"/>
+                                    <outlet property="delegate" destination="2cW-jH-iXJ" id="cpx-GV-ZnZ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1058823529" green="0.078431372550000003" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bAy-Hh-Xcr" firstAttribute="bottom" secondItem="5wt-Pu-4bV" secondAttribute="bottom" id="g9t-Ze-UNe"/>
+                            <constraint firstItem="5wt-Pu-4bV" firstAttribute="top" secondItem="bAy-Hh-Xcr" secondAttribute="top" id="iBM-ss-gTi"/>
+                            <constraint firstItem="bAy-Hh-Xcr" firstAttribute="trailing" secondItem="5wt-Pu-4bV" secondAttribute="trailing" id="qSO-5D-sfj"/>
+                            <constraint firstItem="5wt-Pu-4bV" firstAttribute="leading" secondItem="bAy-Hh-Xcr" secondAttribute="leading" id="zyI-8a-nVw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bAy-Hh-Xcr"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="设置" image="icon_tab_setting" id="7zH-Zk-qpU"/>
+                    <connections>
+                        <outlet property="settingTableView" destination="5wt-Pu-4bV" id="NAb-6n-AJj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="amY-qe-f4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

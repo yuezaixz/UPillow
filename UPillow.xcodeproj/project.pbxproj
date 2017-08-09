@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88A98A8726F3171272FF4135 /* Pods_UPillow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF649B0A3BE00AB93442C8A8 /* Pods_UPillow.framework */; };
+		A60118C31F3AB468007E0D20 /* PSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60118C21F3AB468007E0D20 /* PSettingViewController.swift */; };
 		A605C5EE1F340439002157F8 /* WDCBConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A605C5ED1F340439002157F8 /* WDCBConfigurationFactory.swift */; };
 		A60B14331F2F048F00675C6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60B14321F2F048F00675C6E /* AppDelegate.swift */; };
 		A60B14351F2F048F00675C6E /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60B14341F2F048F00675C6E /* IndexViewController.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		0FB69198C5D91623BCE06CD0 /* Pods-UPillow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UPillow.release.xcconfig"; path = "Pods/Target Support Files/Pods-UPillow/Pods-UPillow.release.xcconfig"; sourceTree = "<group>"; };
 		47514E3EF25A8FA86797F96B /* Pods-UPillow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UPillow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UPillow/Pods-UPillow.debug.xcconfig"; sourceTree = "<group>"; };
+		A60118C21F3AB468007E0D20 /* PSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSettingViewController.swift; sourceTree = "<group>"; };
 		A605C5ED1F340439002157F8 /* WDCBConfigurationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCBConfigurationFactory.swift; sourceTree = "<group>"; };
 		A60B142F1F2F048F00675C6E /* UPillow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UPillow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60B14321F2F048F00675C6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				A60B14341F2F048F00675C6E /* IndexViewController.swift */,
 				A617EC0C1F340EC30017A7E8 /* ConnectViewController.swift */,
+				A60118C21F3AB468007E0D20 /* PSettingViewController.swift */,
 			);
 			path = ViewCotrollers;
 			sourceTree = "<group>";
@@ -153,8 +156,8 @@
 			children = (
 				A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */,
 				A6662BD61F3999E000691E1B /* PRedShadeButton.swift */,
-				A65A30921F39B02500C48EB6 /* SwitchSettingCell.swift */,
 				A65A30941F39B07800C48EB6 /* BaseSettingCell.swift */,
+				A65A30921F39B02500C48EB6 /* SwitchSettingCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				A65A30A41F39B74D00C48EB6 /* Logger.swift in Sources */,
 				A65A30981F39B0BA00C48EB6 /* Spec.swift in Sources */,
 				A617EC0F1F345C820017A7E8 /* CBCentralManager+Extensions.swift in Sources */,
+				A60118C31F3AB468007E0D20 /* PSettingViewController.swift in Sources */,
 				A6DD6EC71F32FB7A0063B562 /* PDataHandle.swift in Sources */,
 				A60B14331F2F048F00675C6E /* AppDelegate.swift in Sources */,
 				A65A309E1F39B3E800C48EB6 /* Bundle+Extensions.swift in Sources */,
@@ -510,7 +514,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L6U7BB57HF;
 				INFOPLIST_FILE = UPillow/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.runmaf.pillow.UPillow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -526,7 +530,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L6U7BB57HF;
 				INFOPLIST_FILE = UPillow/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.runmaf.pillow.UPillow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
