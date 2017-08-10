@@ -27,7 +27,14 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     @IBOutlet weak var buyInfoContainerView: UIView!
     private var _redShadeButton : PRedShadeButton!
     
+    @IBOutlet weak var demoImageView: UIImageView!
+    
     @IBOutlet var circleViews: [UIView]!
+    
+    @IBOutlet weak var topDataContainerView: UIView!
+    @IBOutlet weak var sleepPoseLabel: UILabel!
+    @IBOutlet weak var pillowLevelLabel: UILabel!
+    
     
     private var animationTimer:Timer?
     
@@ -86,6 +93,20 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     func loadCurrentPeer(_ peer:WDPeripheal) {
         autoConnectView.isHidden = true
         //TODO 加载当前连接的鞋垫
+        demoImageView.isHidden = false
+        topDataContainerView.isHidden = false
+        loadNextImage(1)
+    }
+    
+    func loadNextImage(_ i:Int) {
+//        demoImageView.image = UIImage.init(named: "icon_demo_supine_\(i).jpg")
+//        var nextIndex = i + 1
+//        if nextIndex > 17 {
+//            nextIndex = 1
+//        }
+//        performAfterDelay(sec: 0.1) {
+//            self.loadNextImage(nextIndex)
+//        }
     }
     
     // MARK: circle animation
