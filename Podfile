@@ -9,5 +9,6 @@ target 'UPillow' do
     pod 'Alamofire'           # 网络请求
     pod 'pop'
     pod 'JHPullToRefreshKit'  #  刷新框架 https://cocoapods.org/pods/PullToRefreshKit
+    pod 'Bugly'
 
 end

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Bugly
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        application.setStatusBarStyle(.lightContent, animated: false);
+        application.setStatusBarStyle(.lightContent, animated: false)
+        Bugly.start(withAppId: "6505f031e7")
         return true
     }
 

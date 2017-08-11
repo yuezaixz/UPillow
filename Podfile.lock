@@ -1,18 +1,21 @@
 PODS:
   - Alamofire (4.5.0)
+  - Bugly (2.4.8)
   - JHPullToRefreshKit (1.0.1)
   - pop (1.0.10)
 
 DEPENDENCIES:
   - Alamofire
+  - Bugly
   - JHPullToRefreshKit
   - pop
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  Bugly: da3c02408c14838d498429320545a8e439392978
   JHPullToRefreshKit: ec51e32764eacf468eddf3d05a9f1b3b6d9a7d76
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
 
-PODFILE CHECKSUM: d878e8597eb62002e813f067389f0b984f7c1227
+PODFILE CHECKSUM: 0cd97a52876f9cdeffbaf78c8193759880450313
 
 COCOAPODS: 1.2.1
