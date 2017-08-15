@@ -92,7 +92,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_demo_supine_1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="PlE-rr-5Sz">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_demo_supine_1" translatesAutoresizingMaskIntoConstraints="NO" id="PlE-rr-5Sz">
                                 <rect key="frame" x="0.0" y="131" width="375" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PlE-rr-5Sz" secondAttribute="height" id="H7W-Sj-teD"/>
@@ -1234,7 +1234,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_demo_supine_1.jpg" width="1080" height="1080"/>
+        <image name="icon_demo_supine_1" width="1080" height="1080"/>
         <image name="icon_disconnect_peer" width="7" height="7"/>
         <image name="icon_peer_stopsearch" width="81" height="81"/>
         <image name="icon_pillow_item" width="45" height="45"/>

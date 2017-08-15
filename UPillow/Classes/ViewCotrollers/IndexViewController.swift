@@ -99,9 +99,9 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     }
     
     func loadNextImage(_ i:Int) {
-//        demoImageView.image = UIImage.init(named: "icon_demo_supine_\(i).jpg")
+//        demoImageView.image = UIImage.init(named: "icon_demo_side_\(i)")
 //        var nextIndex = i + 1
-//        if nextIndex > 17 {
+//        if nextIndex > 10 {
 //            nextIndex = 1
 //        }
 //        performAfterDelay(sec: 0.1) {

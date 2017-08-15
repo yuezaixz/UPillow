@@ -99,24 +99,8 @@
 		A60118C41F3B0AD2007E0D20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A60118C51F3B0ADF007E0D20 /* IndexDemo */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		A60118C51F3B0ADF007E0D20 /* IndexDemo */ = {
-			isa = PBXGroup;
-			children = (
-				A60118C61F3B0AEB007E0D20 /* Supine */,
-			);
-			path = IndexDemo;
-			sourceTree = "<group>";
-		};
-		A60118C61F3B0AEB007E0D20 /* Supine */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Supine;
 			sourceTree = "<group>";
 		};
 		A605C5EF1F340E1C002157F8 /* ViewCotrollers */ = {
