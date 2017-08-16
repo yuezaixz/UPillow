@@ -46,6 +46,13 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
         super.viewDidLoad()
         self.autoConnectView.layer.borderWidth = 1.0;
         self.autoConnectView.layer.borderColor = UIColor.lightGray.cgColor;
+        
+        //由于Xcode9 beta5的bug，所以通过代码添加gesture
+        let gesture = UITapGestureRecognizer.init(target: self, action: #selector(tapConnectGestureAction(_:)))
+        gesture.numberOfTapsRequired = 1
+        
+        self.autoConnectView.addGestureRecognizer(gesture)
+        
         WDCentralManage.shareInstance.delegate = self
         PDataHandle.shareInstance.delegate = self
     }
@@ -164,7 +171,12 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     
     @IBAction func tapConnectGestureAction(_ sender: UITapGestureRecognizer) {
         if sender.state == UIGestureRecognizerState.ended {
-            print("进入连接页面")
+//            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+//            Company100ViewController * vc = (Company100ViewController *)[sb instantiateViewControllerWithIdentifier:@"vc-identifier"];
+            let sb = UIStoryboard.init(name: "Main", bundle: nil)
+            let connectViewController = sb.instantiateViewController(withIdentifier: "ConnectViewController") as! ConnectViewController
+            self.present(connectViewController, animated: true, completion: nil)
+            
         }
     }
     @objc private func actionBuy() {

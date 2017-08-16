@@ -221,6 +221,11 @@ class ConnectViewController: UIViewController,WDCentralManageDelegate,UITableVie
         WDCentralManage.shareInstance.scanWithConfiguration(WDCBConfigurationFactory.pillowConfiguration, duration: 15)
     }
     
+    @IBAction func actionDismiss(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     //MARK:PillowDiscoveryCellDelegate
     func connectDiscovery(_ discovery:WDDiscovery, at indexPath:IndexPath){
         WDCentralManage.shareInstance.interruptScan()//停止搜索
