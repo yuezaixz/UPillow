@@ -16,6 +16,8 @@ public struct Specs {
         public let insoleRSSILevelYellow = UIColor(r: 255, g: 171, b: 28)
         public let insoleRSSILevelRed = UIColor(r: 219, g: 77, b: 58)
         
+        public let orange = UIColor(hex: 0xf26925)
+        
         public let tint = UIColor(hex: 0x455a64)
         public let red = UIColor(hex: 0xea545d)
         public let white = UIColor.white

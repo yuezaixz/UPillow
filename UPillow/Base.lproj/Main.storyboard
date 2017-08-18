@@ -53,22 +53,6 @@
             </objects>
             <point key="canvasLocation" x="338" y="531"/>
         </scene>
-        <!--健康-->
-        <scene sceneID="WeC-tY-ljd">
-            <objects>
-                <viewController id="Rdx-TL-q8p" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vSA-Jy-kVS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="e69-WW-9RP"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="健康" image="icon_tab_health" id="eMX-u0-S56"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8IA-9o-rFl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="337" y="1185"/>
-        </scene>
         <!--我的-->
         <scene sceneID="MBd-Z1-7Dj">
             <objects>
@@ -94,7 +78,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_demo_supine_1" translatesAutoresizingMaskIntoConstraints="NO" id="PlE-rr-5Sz">
-                                <rect key="frame" x="0.0" y="131" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="131.5" width="375" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PlE-rr-5Sz" secondAttribute="height" id="H7W-Sj-teD"/>
                                 </constraints>
@@ -1225,13 +1209,23 @@
                     <connections>
                         <segue destination="TSL-wS-yk1" kind="relationship" relationship="viewControllers" id="mt1-ZO-Cfh"/>
                         <segue destination="2cW-jH-iXJ" kind="relationship" relationship="viewControllers" id="GJu-ff-FIl"/>
-                        <segue destination="Rdx-TL-q8p" kind="relationship" relationship="viewControllers" id="bVi-p2-eoo"/>
+                        <segue destination="eMN-Gv-ADu" kind="relationship" relationship="viewControllers" id="bVi-p2-eoo"/>
                         <segue destination="fkH-Hc-rKW" kind="relationship" relationship="viewControllers" id="hBn-ar-NmD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1E8-JW-2W4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-614" y="204"/>
+        </scene>
+        <!--PillowHealthData-->
+        <scene sceneID="BRT-Wq-lZH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PillowHealthData" id="eMN-Gv-ADu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="健康" image="icon_tab_health" id="cMx-oO-mEf"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Nd-p1-1Bi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="466" y="1298"/>
         </scene>
     </scenes>
     <resources>

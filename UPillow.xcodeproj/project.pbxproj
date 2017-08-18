@@ -31,6 +31,9 @@
 		A6662BD51F380CAA00691E1B /* PNoticeHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6662BD41F380CAA00691E1B /* PNoticeHUD.swift */; };
 		A6662BD71F3999E000691E1B /* PRedShadeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6662BD61F3999E000691E1B /* PRedShadeButton.swift */; };
 		A6809A3E1F34744800089E7A /* PillowDiscoveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */; };
+		A6C82CE71F46C28200ED7502 /* PillowHealthData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6C82CE61F46C28200ED7502 /* PillowHealthData.storyboard */; };
+		A6C82CE91F46C46600ED7502 /* PHealthRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C82CE81F46C46600ED7502 /* PHealthRecordViewController.swift */; };
+		A6C82CED1F46D24F00ED7502 /* PImageDrawUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C82CEC1F46D24F00ED7502 /* PImageDrawUtil.swift */; };
 		A6DD6EC01F30801F0063B562 /* WDCentralManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EBF1F30801F0063B562 /* WDCentralManage.swift */; };
 		A6DD6EC21F30C4C20063B562 /* WDCBConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EC11F30C4C20063B562 /* WDCBConfiguration.swift */; };
 		A6DD6EC41F30C9FC0063B562 /* WDPeripheal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EC31F30C9FC0063B562 /* WDPeripheal.swift */; };
@@ -68,6 +71,9 @@
 		A6662BD41F380CAA00691E1B /* PNoticeHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNoticeHUD.swift; sourceTree = "<group>"; };
 		A6662BD61F3999E000691E1B /* PRedShadeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRedShadeButton.swift; sourceTree = "<group>"; };
 		A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillowDiscoveryCell.swift; sourceTree = "<group>"; };
+		A6C82CE61F46C28200ED7502 /* PillowHealthData.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PillowHealthData.storyboard; sourceTree = "<group>"; };
+		A6C82CE81F46C46600ED7502 /* PHealthRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHealthRecordViewController.swift; sourceTree = "<group>"; };
+		A6C82CEC1F46D24F00ED7502 /* PImageDrawUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PImageDrawUtil.swift; sourceTree = "<group>"; };
 		A6DD6EBF1F30801F0063B562 /* WDCentralManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCentralManage.swift; sourceTree = "<group>"; };
 		A6DD6EC11F30C4C20063B562 /* WDCBConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCBConfiguration.swift; sourceTree = "<group>"; };
 		A6DD6EC31F30C9FC0063B562 /* WDPeripheal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDPeripheal.swift; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 				A60B14341F2F048F00675C6E /* IndexViewController.swift */,
 				A617EC0C1F340EC30017A7E8 /* ConnectViewController.swift */,
 				A60118C21F3AB468007E0D20 /* PSettingViewController.swift */,
+				A6C82CE81F46C46600ED7502 /* PHealthRecordViewController.swift */,
 			);
 			path = ViewCotrollers;
 			sourceTree = "<group>";
@@ -138,6 +145,7 @@
 				A60B14441F3017FC00675C6E /* Classes */,
 				A60B14321F2F048F00675C6E /* AppDelegate.swift */,
 				A60B14361F2F048F00675C6E /* Main.storyboard */,
+				A6C82CE61F46C28200ED7502 /* PillowHealthData.storyboard */,
 				A60B14391F2F048F00675C6E /* Assets.xcassets */,
 				A60B143B1F2F048F00675C6E /* LaunchScreen.storyboard */,
 				A60B143E1F2F048F00675C6E /* Info.plist */,
@@ -174,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				A6662BD41F380CAA00691E1B /* PNoticeHUD.swift */,
+				A6C82CEC1F46D24F00ED7502 /* PImageDrawUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -287,6 +296,7 @@
 			files = (
 				A60B143D1F2F048F00675C6E /* LaunchScreen.storyboard in Resources */,
 				A65A30AD1F39B8A200C48EB6 /* Localizable.strings in Resources */,
+				A6C82CE71F46C28200ED7502 /* PillowHealthData.storyboard in Resources */,
 				A60B143A1F2F048F00675C6E /* Assets.xcassets in Resources */,
 				A60B14381F2F048F00675C6E /* Main.storyboard in Resources */,
 			);
@@ -353,12 +363,14 @@
 				A605C5EE1F340439002157F8 /* WDCBConfigurationFactory.swift in Sources */,
 				A6DD6ECA1F3308BA0063B562 /* String+Extensions.swift in Sources */,
 				A6809A3E1F34744800089E7A /* PillowDiscoveryCell.swift in Sources */,
+				A6C82CED1F46D24F00ED7502 /* PImageDrawUtil.swift in Sources */,
 				A65A30A21F39B70100C48EB6 /* Global.swift in Sources */,
 				A6DD6EC41F30C9FC0063B562 /* WDPeripheal.swift in Sources */,
 				A65A30931F39B02500C48EB6 /* SwitchSettingCell.swift in Sources */,
 				A65A30A41F39B74D00C48EB6 /* Logger.swift in Sources */,
 				A65A30981F39B0BA00C48EB6 /* Spec.swift in Sources */,
 				A617EC0F1F345C820017A7E8 /* CBCentralManager+Extensions.swift in Sources */,
+				A6C82CE91F46C46600ED7502 /* PHealthRecordViewController.swift in Sources */,
 				A60118C31F3AB468007E0D20 /* PSettingViewController.swift in Sources */,
 				A6DD6EC71F32FB7A0063B562 /* PDataHandle.swift in Sources */,
 				A60B14331F2F048F00675C6E /* AppDelegate.swift in Sources */,

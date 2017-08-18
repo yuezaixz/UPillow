@@ -86,9 +86,6 @@ class PSettingViewController: UIViewController {
         super.viewDidLoad()
         settingTableView.register(BaseSettingCell.self, forCellReuseIdentifier: BaseSettingCell.identifier)
         settingTableView.tableFooterView = versionView
-        
-        title = Bundle.main.name
-        
     }
     
     fileprivate func rows(at section: Int) -> Array<Any> {
