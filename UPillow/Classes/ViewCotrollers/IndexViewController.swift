@@ -63,9 +63,9 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
         //头部购买按钮初始化
         _redShadeButton = PRedShadeButton.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: self.buyInfoContainerView.bounds.size.height), text: "购买枕头")
         _redShadeButton.addTarget(self, action: #selector(actionBuy), for: .touchUpInside)
-        
+
         self.buyInfoContainerView.addSubview(_redShadeButton)
-        
+
         if let currentPeer = WDCentralManage.shareInstance.currentPeer {
             self.loadCurrentPeer(currentPeer)
             self.buyInfoContainerView.isHidden = true
@@ -76,8 +76,21 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
             self.pleaseWait(txt: "自动连接中")
         } else {
             self.buyInfoContainerView.isHidden = false
-            
+
         }
+        
+        //TODO 测试代码
+//        [[[NSBundle mainBundle] loadNibNamed:@"RMHomeStepCountView" owner:nil options:nil] lastObject];
+//        let chartView = Bundle.main.loadNibNamed("PStatusChartView", owner: nil, options: nil)?.first! as! PStatusChartView
+//        chartView.initializeBy(headerHeight: 60,
+//                               data: PStatusData(startTime: Date.init(),
+//                                                 duration: 100,
+//                                                 statusLabels: ["侧卧","仰卧"],
+//                                                 statusColors: [Specs.color.insoleRSSILevelGreen,Specs.color.insoleRSSILevelRed],
+//                                                 items: [0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+//        )
+//        chartView.frame = CGRect(x: 0, y: 200, width: UIScreen.main.bounds.size.width, height: chartView.statusViewHeight)
+//        self.view.addSubview(chartView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -171,8 +184,6 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     
     @IBAction func tapConnectGestureAction(_ sender: UITapGestureRecognizer) {
         if sender.state == UIGestureRecognizerState.ended {
-//            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-//            Company100ViewController * vc = (Company100ViewController *)[sb instantiateViewControllerWithIdentifier:@"vc-identifier"];
             let sb = UIStoryboard.init(name: "Main", bundle: nil)
             let connectViewController = sb.instantiateViewController(withIdentifier: "ConnectViewController") as! ConnectViewController
             self.present(connectViewController, animated: true, completion: nil)

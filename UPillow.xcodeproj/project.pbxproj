@@ -30,10 +30,13 @@
 		A65A30AD1F39B8A200C48EB6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A65A30AF1F39B8A200C48EB6 /* Localizable.strings */; };
 		A6662BD51F380CAA00691E1B /* PNoticeHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6662BD41F380CAA00691E1B /* PNoticeHUD.swift */; };
 		A6662BD71F3999E000691E1B /* PRedShadeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6662BD61F3999E000691E1B /* PRedShadeButton.swift */; };
+		A66687451F4B16AB0095D42B /* Number+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66687441F4B16AB0095D42B /* Number+Extensions.swift */; };
 		A6809A3E1F34744800089E7A /* PillowDiscoveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */; };
 		A6C82CE71F46C28200ED7502 /* PillowHealthData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6C82CE61F46C28200ED7502 /* PillowHealthData.storyboard */; };
 		A6C82CE91F46C46600ED7502 /* PHealthRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C82CE81F46C46600ED7502 /* PHealthRecordViewController.swift */; };
 		A6C82CED1F46D24F00ED7502 /* PImageDrawUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C82CEC1F46D24F00ED7502 /* PImageDrawUtil.swift */; };
+		A6C82CEF1F46DF5900ED7502 /* PStatusChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C82CEE1F46DF5900ED7502 /* PStatusChartView.swift */; };
+		A6C82CF11F46E0C800ED7502 /* PStatusChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6C82CF01F46E0C800ED7502 /* PStatusChartView.xib */; };
 		A6DD6EC01F30801F0063B562 /* WDCentralManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EBF1F30801F0063B562 /* WDCentralManage.swift */; };
 		A6DD6EC21F30C4C20063B562 /* WDCBConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EC11F30C4C20063B562 /* WDCBConfiguration.swift */; };
 		A6DD6EC41F30C9FC0063B562 /* WDPeripheal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EC31F30C9FC0063B562 /* WDPeripheal.swift */; };
@@ -70,10 +73,13 @@
 		A65A30B31F39B8D000C48EB6 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A6662BD41F380CAA00691E1B /* PNoticeHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNoticeHUD.swift; sourceTree = "<group>"; };
 		A6662BD61F3999E000691E1B /* PRedShadeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRedShadeButton.swift; sourceTree = "<group>"; };
+		A66687441F4B16AB0095D42B /* Number+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extensions.swift"; sourceTree = "<group>"; };
 		A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillowDiscoveryCell.swift; sourceTree = "<group>"; };
 		A6C82CE61F46C28200ED7502 /* PillowHealthData.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PillowHealthData.storyboard; sourceTree = "<group>"; };
 		A6C82CE81F46C46600ED7502 /* PHealthRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHealthRecordViewController.swift; sourceTree = "<group>"; };
 		A6C82CEC1F46D24F00ED7502 /* PImageDrawUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PImageDrawUtil.swift; sourceTree = "<group>"; };
+		A6C82CEE1F46DF5900ED7502 /* PStatusChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PStatusChartView.swift; sourceTree = "<group>"; };
+		A6C82CF01F46E0C800ED7502 /* PStatusChartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PStatusChartView.xib; sourceTree = "<group>"; };
 		A6DD6EBF1F30801F0063B562 /* WDCentralManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCentralManage.swift; sourceTree = "<group>"; };
 		A6DD6EC11F30C4C20063B562 /* WDCBConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCBConfiguration.swift; sourceTree = "<group>"; };
 		A6DD6EC31F30C9FC0063B562 /* WDPeripheal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDPeripheal.swift; sourceTree = "<group>"; };
@@ -174,6 +180,8 @@
 				A6662BD61F3999E000691E1B /* PRedShadeButton.swift */,
 				A65A30941F39B07800C48EB6 /* BaseSettingCell.swift */,
 				A65A30921F39B02500C48EB6 /* SwitchSettingCell.swift */,
+				A6C82CEE1F46DF5900ED7502 /* PStatusChartView.swift */,
+				A6C82CF01F46E0C800ED7502 /* PStatusChartView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,6 +227,7 @@
 				A65A309B1F39B27500C48EB6 /* UIView+Extension.swift */,
 				A65A309D1F39B3E800C48EB6 /* Bundle+Extensions.swift */,
 				A65A309F1F39B6C900C48EB6 /* Date+Extensions.swift */,
+				A66687441F4B16AB0095D42B /* Number+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -298,6 +307,7 @@
 				A65A30AD1F39B8A200C48EB6 /* Localizable.strings in Resources */,
 				A6C82CE71F46C28200ED7502 /* PillowHealthData.storyboard in Resources */,
 				A60B143A1F2F048F00675C6E /* Assets.xcassets in Resources */,
+				A6C82CF11F46E0C800ED7502 /* PStatusChartView.xib in Resources */,
 				A60B14381F2F048F00675C6E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +392,8 @@
 				A6DD6EC01F30801F0063B562 /* WDCentralManage.swift in Sources */,
 				A617EC111F345D140017A7E8 /* WDCentralManageState.swift in Sources */,
 				A65A309C1F39B27500C48EB6 /* UIView+Extension.swift in Sources */,
+				A6C82CEF1F46DF5900ED7502 /* PStatusChartView.swift in Sources */,
+				A66687451F4B16AB0095D42B /* Number+Extensions.swift in Sources */,
 				A65A309A1F39B0F300C48EB6 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
