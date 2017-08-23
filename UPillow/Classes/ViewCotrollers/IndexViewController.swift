@@ -76,21 +76,7 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
             self.pleaseWait(txt: "自动连接中")
         } else {
             self.buyInfoContainerView.isHidden = false
-
         }
-        
-        //TODO 测试代码
-//        [[[NSBundle mainBundle] loadNibNamed:@"RMHomeStepCountView" owner:nil options:nil] lastObject];
-//        let chartView = Bundle.main.loadNibNamed("PStatusChartView", owner: nil, options: nil)?.first! as! PStatusChartView
-//        chartView.initializeBy(headerHeight: 60,
-//                               data: PStatusData(startTime: Date.init(),
-//                                                 duration: 100,
-//                                                 statusLabels: ["侧卧","仰卧"],
-//                                                 statusColors: [Specs.color.insoleRSSILevelGreen,Specs.color.insoleRSSILevelRed],
-//                                                 items: [0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
-//        )
-//        chartView.frame = CGRect(x: 0, y: 200, width: UIScreen.main.bounds.size.width, height: chartView.statusViewHeight)
-//        self.view.addSubview(chartView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

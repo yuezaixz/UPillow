@@ -8,11 +8,13 @@
 
 import UIKit
 
-class PHealthRecordViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class PHealthRecordViewController: UIViewController {
 
     @IBOutlet weak var leftArrowImageView: UIImageView!
     @IBOutlet weak var rightArrowImageView: UIImageView!
     @IBOutlet weak var monthSelectCollectView: UICollectionView!
+    
+    @IBOutlet weak var recordTableView: UITableView!
     
     var currentMonthIndex = -1
     
@@ -24,6 +26,9 @@ class PHealthRecordViewController: UIViewController,UICollectionViewDelegate,UIC
         self.leftArrowImageView.image = PImageDrawUtil.imageOfLeftArrow
         self.rightArrowImageView.image = PImageDrawUtil.imageOfRightArrow
         monthSelectCollectView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        
+//        recordTableView.register(PHealthRecordTableCell.self, forCellReuseIdentifier: PHealthRecordTableCell.identifier)
+        recordTableView.tableFooterView = UIView.init()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +43,15 @@ class PHealthRecordViewController: UIViewController,UICollectionViewDelegate,UIC
         }
     }
 
+    // MARK: - other
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+}
+
+extension PHealthRecordViewController:UICollectionViewDelegate,UICollectionViewDataSource {
+    
     // MARK: - Collection View
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -56,12 +70,23 @@ class PHealthRecordViewController: UIViewController,UICollectionViewDelegate,UIC
         currentMonthIndex = indexPath.row
         collectionView.reloadData()
     }
+    
+}
 
-    // MARK: - other
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+extension PHealthRecordViewController:UITableViewDelegate,UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
     }
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:PHealthRecordTableCell = recordTableView.dequeueReusableCell(withIdentifier: PHealthRecordTableCell.identifier, for: indexPath) as! PHealthRecordTableCell
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 220.cgFloat
+    }
+    
 }
 
 class MonthSelectCollectViewCell:UICollectionViewCell {
