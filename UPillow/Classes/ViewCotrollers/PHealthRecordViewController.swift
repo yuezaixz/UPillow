@@ -27,7 +27,6 @@ class PHealthRecordViewController: UIViewController {
         self.rightArrowImageView.image = PImageDrawUtil.imageOfRightArrow
         monthSelectCollectView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
-//        recordTableView.register(PHealthRecordTableCell.self, forCellReuseIdentifier: PHealthRecordTableCell.identifier)
         recordTableView.tableFooterView = UIView.init()
     }
     
@@ -84,7 +83,7 @@ extension PHealthRecordViewController:UITableViewDelegate,UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 220.cgFloat
+        return 240.cgFloat
     }
     
 }

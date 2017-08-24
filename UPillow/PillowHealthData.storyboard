@@ -102,20 +102,20 @@
                                     <constraint firstAttribute="height" constant="40" id="L7Y-Li-Csk"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fBX-3C-KtU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fBX-3C-KtU">
                                 <rect key="frame" x="0.0" y="128" width="375" height="539"/>
                                 <color key="backgroundColor" red="0.10588235294117647" green="0.078431372549019607" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.1058823529" green="0.078431372550000003" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PHealthRecordTableCellIdentifier" rowHeight="220" id="amf-ze-33Y" customClass="PHealthRecordTableCell" customModule="UPillow" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="220"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PHealthRecordTableCellIdentifier" rowHeight="240" id="amf-ze-33Y" customClass="PHealthRecordTableCell" customModule="UPillow" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="amf-ze-33Y" id="I2s-55-dcS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hyc-7S-Uo6">
-                                                    <rect key="frame" x="0.0" y="10" width="375" height="200"/>
+                                                    <rect key="frame" x="6" y="10" width="363" height="220"/>
                                                     <color key="backgroundColor" red="0.16862745098039217" green="0.14117647058823529" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGa-Nk-W5a">
@@ -175,7 +175,7 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Cz-A6-nJw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                                                     <connections>
                                                         <action selector="actionTap:" destination="amf-ze-33Y" eventType="touchUpInside" id="9CJ-UO-lMX"/>
                                                     </connections>
@@ -183,7 +183,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="2Cz-A6-nJw" firstAttribute="leading" secondItem="I2s-55-dcS" secondAttribute="leading" id="0fi-Bm-UfC"/>
-                                                <constraint firstItem="Hyc-7S-Uo6" firstAttribute="leading" secondItem="I2s-55-dcS" secondAttribute="leading" id="5QY-jT-rd9"/>
+                                                <constraint firstItem="Hyc-7S-Uo6" firstAttribute="leading" secondItem="I2s-55-dcS" secondAttribute="leading" constant="6" id="5QY-jT-rd9"/>
                                                 <constraint firstItem="Hyc-7S-Uo6" firstAttribute="top" secondItem="I2s-55-dcS" secondAttribute="top" constant="10" id="CHK-x0-2p1"/>
                                                 <constraint firstAttribute="trailing" secondItem="2Cz-A6-nJw" secondAttribute="trailing" id="Hsf-d3-qBP"/>
                                                 <constraint firstItem="ZGa-Nk-W5a" firstAttribute="leading" secondItem="I2s-55-dcS" secondAttribute="leadingMargin" id="M5E-TC-iXI"/>
@@ -191,7 +191,7 @@
                                                 <constraint firstItem="ZGa-Nk-W5a" firstAttribute="top" secondItem="I2s-55-dcS" secondAttribute="topMargin" constant="10" id="TLl-Y9-AhT"/>
                                                 <constraint firstItem="2Cz-A6-nJw" firstAttribute="top" secondItem="I2s-55-dcS" secondAttribute="top" id="i0h-Oe-N3U"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ZGa-Nk-W5a" secondAttribute="trailing" id="lCS-fe-nHG"/>
-                                                <constraint firstAttribute="trailing" secondItem="Hyc-7S-Uo6" secondAttribute="trailing" id="lR3-XK-M8O"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hyc-7S-Uo6" secondAttribute="trailing" constant="6" id="lR3-XK-M8O"/>
                                                 <constraint firstAttribute="bottom" secondItem="2Cz-A6-nJw" secondAttribute="bottom" id="s5u-W1-4wB"/>
                                             </constraints>
                                         </tableViewCellContentView>

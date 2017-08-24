@@ -20,6 +20,12 @@ struct PStatusData {
     var statusColors:[UIColor]
     var items:[Int]
     
+    var endTime:Date {
+        get {
+            return startTime.addingTimeInterval(TimeInterval(duration))
+        }
+    }
+    
     var statusCount:Int {
         get {
             return statusLabels.count
@@ -56,6 +62,8 @@ class PStatusChartView: UIView {
     private var chartViewPathLayers: [CAShapeLayer] = []
     @IBOutlet weak var chartViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var endTimeLabel: UILabel!
     public var data:PStatusData?
     private var labels:[UILabel] = []
     private var _lineSpaceWidth:CGFloat {
@@ -87,6 +95,8 @@ class PStatusChartView: UIView {
         for chartLayer in chartViewPathLayers {
             chartLayer.removeFromSuperlayer()
         }
+        self.startTimeLabel.text = data.startTime.hourMinuteText()
+        self.endTimeLabel.text = data.endTime.hourMinuteText()
         chartViewPathLayers.removeAll()
         labels.removeAll()
     }

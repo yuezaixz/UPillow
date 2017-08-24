@@ -43,8 +43,18 @@ public extension Date {
         return ""
     }
     
+    func hourMinuteText() -> String {
+        let timeZone = TimeZone.current
+        let formatter = DateFormatter()
+        formatter.timeZone = timeZone
+        formatter.locale = Locale.init(identifier: "zh_CN")
+        formatter.dateFormat = "hh:mm"
+        
+        return formatter.string(from: self)
+    }
+    
     func dayText(timeOffset:Int) -> String {
-        let timeZone = TimeZone.init(identifier: "UTC")
+        let timeZone = TimeZone.current
         let formatter = DateFormatter()
         formatter.timeZone = timeZone
         formatter.locale = Locale.init(identifier: "zh_CN")
