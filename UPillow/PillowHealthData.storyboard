@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -91,15 +92,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eFM-5E-VOR">
                                 <rect key="frame" x="5" y="73" width="12" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="LAC-qx-FAC"/>
-                                    <constraint firstAttribute="width" constant="12" id="qWz-KQ-hnB"/>
+                                    <constraint firstAttribute="width" secondItem="eFM-5E-VOR" secondAttribute="height" multiplier="3:10" id="LZP-Dw-Xhn"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CzR-ia-ZUa">
                                 <rect key="frame" x="358" y="73" width="12" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="12" id="6Ld-ct-wRy"/>
-                                    <constraint firstAttribute="height" constant="40" id="L7Y-Li-Csk"/>
+                                    <constraint firstAttribute="width" secondItem="CzR-ia-ZUa" secondAttribute="height" multiplier="3:10" id="05j-0k-gqV"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fBX-3C-KtU">
@@ -219,8 +218,10 @@
                             <constraint firstItem="O08-ON-buz" firstAttribute="top" secondItem="NSP-jj-vEb" secondAttribute="bottom" constant="7.5" id="FYI-ha-x3G"/>
                             <constraint firstItem="fBX-3C-KtU" firstAttribute="bottom" secondItem="e69-WW-9RP" secondAttribute="bottom" id="GVB-YW-399"/>
                             <constraint firstItem="eFM-5E-VOR" firstAttribute="leading" secondItem="O08-ON-buz" secondAttribute="leading" constant="5" id="Ncj-yM-T6r"/>
-                            <constraint firstItem="eFM-5E-VOR" firstAttribute="centerY" secondItem="O08-ON-buz" secondAttribute="centerY" id="TZf-V8-lzQ"/>
+                            <constraint firstItem="CzR-ia-ZUa" firstAttribute="top" secondItem="O08-ON-buz" secondAttribute="top" constant="15" id="ahl-bg-DHe"/>
                             <constraint firstItem="NSP-jj-vEb" firstAttribute="top" secondItem="e69-WW-9RP" secondAttribute="top" constant="5" id="apH-1U-uXE"/>
+                            <constraint firstItem="eFM-5E-VOR" firstAttribute="bottom" secondItem="O08-ON-buz" secondAttribute="bottom" constant="-15" id="bnQ-KH-6sc"/>
+                            <constraint firstItem="eFM-5E-VOR" firstAttribute="top" secondItem="O08-ON-buz" secondAttribute="top" constant="15" id="cXL-i6-dkr"/>
                             <constraint firstItem="CzR-ia-ZUa" firstAttribute="centerY" secondItem="O08-ON-buz" secondAttribute="centerY" id="ddB-D3-bVB"/>
                             <constraint firstItem="CzR-ia-ZUa" firstAttribute="trailing" secondItem="O08-ON-buz" secondAttribute="trailing" constant="-5" id="egX-ci-YtR"/>
                             <constraint firstItem="O08-ON-buz" firstAttribute="trailing" secondItem="e69-WW-9RP" secondAttribute="trailing" id="gcb-hs-YKI"/>
@@ -228,6 +229,7 @@
                             <constraint firstItem="O08-ON-buz" firstAttribute="leading" secondItem="e69-WW-9RP" secondAttribute="leading" id="lHc-Li-uDV"/>
                             <constraint firstItem="fBX-3C-KtU" firstAttribute="leading" secondItem="e69-WW-9RP" secondAttribute="leading" id="nks-3z-vNP"/>
                             <constraint firstItem="NSP-jj-vEb" firstAttribute="centerX" secondItem="e69-WW-9RP" secondAttribute="centerX" id="pcV-wk-hOy"/>
+                            <constraint firstItem="CzR-ia-ZUa" firstAttribute="bottom" secondItem="O08-ON-buz" secondAttribute="bottom" constant="-15" id="qiR-BR-LrK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e69-WW-9RP"/>
                     </view>
@@ -236,6 +238,7 @@
                     <connections>
                         <outlet property="leftArrowImageView" destination="eFM-5E-VOR" id="GiH-xV-dzl"/>
                         <outlet property="monthSelectCollectView" destination="O08-ON-buz" id="bH8-Va-nky"/>
+                        <outlet property="monthSelectViewHeightConstraint" destination="YHH-Pd-oJT" id="WwT-1q-koq"/>
                         <outlet property="recordTableView" destination="fBX-3C-KtU" id="8tQ-cQ-92C"/>
                         <outlet property="rightArrowImageView" destination="CzR-ia-ZUa" id="7yX-yK-mli"/>
                     </connections>

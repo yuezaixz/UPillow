@@ -14,6 +14,7 @@ class PHealthRecordViewController: UIViewController {
     @IBOutlet weak var rightArrowImageView: UIImageView!
     @IBOutlet weak var monthSelectCollectView: UICollectionView!
     
+    @IBOutlet weak var monthSelectViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var recordTableView: UITableView!
     
     var currentMonthIndex = -1
@@ -86,6 +87,17 @@ extension PHealthRecordViewController:UITableViewDelegate,UITableViewDataSource 
         return 240.cgFloat
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+//        if translation.y > 0 {
+//
+//        } else {
+//            
+//        }
+        if self.recordTableView.contentOffset.y <= 150 {
+            self.monthSelectViewHeightConstraint.constant = 70 - self.recordTableView.contentOffset.y/3
+        }
+    }
 }
 
 class MonthSelectCollectViewCell:UICollectionViewCell {
