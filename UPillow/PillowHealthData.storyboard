@@ -21,7 +21,7 @@
         <scene sceneID="j0r-WN-95A">
             <objects>
                 <navigationController id="tMf-9f-wfv" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ysI-0V-QJY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="ysI-0V-QJY">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -106,7 +106,7 @@
                                 <color key="backgroundColor" red="0.10588235294117647" green="0.078431372549019607" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.1058823529" green="0.078431372550000003" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PHealthRecordTableCellIdentifier" rowHeight="240" id="amf-ze-33Y" customClass="PHealthRecordTableCell" customModule="UPillow" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PHealthRecordTableCellIdentifier" rowHeight="240" id="amf-ze-33Y" customClass="PHealthRecordTableCell" customModule="UPillow" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="amf-ze-33Y" id="I2s-55-dcS">
@@ -173,25 +173,15 @@
                                                         <constraint firstItem="ZHX-oz-1Fk" firstAttribute="top" secondItem="Hoa-8U-lgt" secondAttribute="bottom" constant="2" id="zFP-mh-5Q8"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Cz-A6-nJw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
-                                                    <connections>
-                                                        <action selector="actionTap:" destination="amf-ze-33Y" eventType="touchUpInside" id="9CJ-UO-lMX"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="2Cz-A6-nJw" firstAttribute="leading" secondItem="I2s-55-dcS" secondAttribute="leading" id="0fi-Bm-UfC"/>
                                                 <constraint firstItem="Hyc-7S-Uo6" firstAttribute="leading" secondItem="I2s-55-dcS" secondAttribute="leading" constant="6" id="5QY-jT-rd9"/>
                                                 <constraint firstItem="Hyc-7S-Uo6" firstAttribute="top" secondItem="I2s-55-dcS" secondAttribute="top" constant="10" id="CHK-x0-2p1"/>
-                                                <constraint firstAttribute="trailing" secondItem="2Cz-A6-nJw" secondAttribute="trailing" id="Hsf-d3-qBP"/>
                                                 <constraint firstItem="ZGa-Nk-W5a" firstAttribute="leading" secondItem="I2s-55-dcS" secondAttribute="leadingMargin" id="M5E-TC-iXI"/>
                                                 <constraint firstAttribute="bottom" secondItem="Hyc-7S-Uo6" secondAttribute="bottom" constant="10" id="QrJ-0O-J5X"/>
                                                 <constraint firstItem="ZGa-Nk-W5a" firstAttribute="top" secondItem="I2s-55-dcS" secondAttribute="topMargin" constant="10" id="TLl-Y9-AhT"/>
-                                                <constraint firstItem="2Cz-A6-nJw" firstAttribute="top" secondItem="I2s-55-dcS" secondAttribute="top" id="i0h-Oe-N3U"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ZGa-Nk-W5a" secondAttribute="trailing" id="lCS-fe-nHG"/>
                                                 <constraint firstAttribute="trailing" secondItem="Hyc-7S-Uo6" secondAttribute="trailing" constant="6" id="lR3-XK-M8O"/>
-                                                <constraint firstAttribute="bottom" secondItem="2Cz-A6-nJw" secondAttribute="bottom" id="s5u-W1-4wB"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1058823529" green="0.078431372550000003" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -203,6 +193,7 @@
                                             <outlet property="sleepDurationLabel" destination="6UH-Jd-fhD" id="Pia-KI-ar7"/>
                                             <outlet property="startSleepTimeLabel" destination="5xk-hd-NVg" id="d8U-aB-OqQ"/>
                                             <outlet property="wakeTimeLabel" destination="Fbx-V7-iHH" id="h5s-Qu-ueb"/>
+                                            <segue destination="tMf-9f-wfv" kind="presentation" identifier="showHealhDetail" trigger="accessoryAction" id="QjT-N0-fWD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -247,17 +238,24 @@
             </objects>
             <point key="canvasLocation" x="-1098.4000000000001" y="1349.7751124437782"/>
         </scene>
-        <!--View Controller-->
+        <!--8月13日睡眠-->
         <scene sceneID="rma-s2-h5l">
             <objects>
-                <viewController id="Sz8-XN-NHy" sceneMemberID="viewController">
+                <viewController id="Sz8-XN-NHy" customClass="PHealthDetailViewController" customModule="UPillow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8DT-7W-gHE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1058823529" green="0.078431372550000003" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="8Ze-E5-EEE"/>
                     </view>
-                    <navigationItem key="navigationItem" id="911-69-KGw"/>
+                    <navigationItem key="navigationItem" title="8月13日睡眠" id="911-69-KGw">
+                        <barButtonItem key="leftBarButtonItem" title="返回" id="zAd-7T-X3T">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="actionBack:" destination="Sz8-XN-NHy" id="dye-aY-ZgU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfe-Qy-Ewl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

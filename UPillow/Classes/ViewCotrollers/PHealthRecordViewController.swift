@@ -22,6 +22,8 @@ class PHealthRecordViewController: UIViewController {
     
     var monthItems:[String] = ["03月","04月","05月","06月","07月","08月"]//TODO 测试用
     
+    var currentRecord:Int?//TODO 测试，暂时只是row
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //绘制左右箭头
@@ -97,9 +99,36 @@ extension PHealthRecordViewController:UITableViewDelegate,UITableViewDataSource 
         return 240.cgFloat
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        currentRecord = indexPath.row
+        performSegue(withIdentifier: SegueIdentifier.showHealhDetail, sender: nil)
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.recordTableView.contentOffset.y <= 150 && self.recordTableView.contentOffset.y > 0 {
             self.monthSelectViewHeightConstraint.constant = 70 - self.recordTableView.contentOffset.y/3
+        }
+    }
+}
+
+extension PHealthRecordViewController {
+    
+    private enum SegueIdentifier {
+        static let showHealhDetail = "showHealhDetail"
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case SegueIdentifier.showHealhDetail?:
+            guard let currentRecord = self.currentRecord else {
+                return
+            }
+            print("select \(currentRecord)")//TODO 测试
+            print((segue.destination as! UINavigationController).topViewController!)            
+            break
+        default:
+            break
+            
         }
     }
 }
