@@ -19,6 +19,7 @@
 		A617EC0F1F345C820017A7E8 /* CBCentralManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A617EC0E1F345C820017A7E8 /* CBCentralManager+Extensions.swift */; };
 		A617EC111F345D140017A7E8 /* WDCentralManageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A617EC101F345D140017A7E8 /* WDCentralManageState.swift */; };
 		A62694321F4D86920048DE47 /* PHealthRecordTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62694311F4D86920048DE47 /* PHealthRecordTableCell.swift */; };
+		A62694341F4E84FA0048DE47 /* PRecordRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62694331F4E84FA0048DE47 /* PRecordRefreshControl.swift */; };
 		A65A30931F39B02500C48EB6 /* SwitchSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A30921F39B02500C48EB6 /* SwitchSettingCell.swift */; };
 		A65A30951F39B07800C48EB6 /* BaseSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A30941F39B07800C48EB6 /* BaseSettingCell.swift */; };
 		A65A30981F39B0BA00C48EB6 /* Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A30971F39B0BA00C48EB6 /* Spec.swift */; };
@@ -61,6 +62,7 @@
 		A617EC0E1F345C820017A7E8 /* CBCentralManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBCentralManager+Extensions.swift"; sourceTree = "<group>"; };
 		A617EC101F345D140017A7E8 /* WDCentralManageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCentralManageState.swift; sourceTree = "<group>"; };
 		A62694311F4D86920048DE47 /* PHealthRecordTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHealthRecordTableCell.swift; sourceTree = "<group>"; };
+		A62694331F4E84FA0048DE47 /* PRecordRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRecordRefreshControl.swift; sourceTree = "<group>"; };
 		A65A30921F39B02500C48EB6 /* SwitchSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchSettingCell.swift; sourceTree = "<group>"; };
 		A65A30941F39B07800C48EB6 /* BaseSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingCell.swift; sourceTree = "<group>"; };
 		A65A30971F39B0BA00C48EB6 /* Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spec.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				A6C82CEE1F46DF5900ED7502 /* PStatusChartView.swift */,
 				A6C82CF01F46E0C800ED7502 /* PStatusChartView.xib */,
 				A62694311F4D86920048DE47 /* PHealthRecordTableCell.swift */,
+				A62694331F4E84FA0048DE47 /* PRecordRefreshControl.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				A6C82CED1F46D24F00ED7502 /* PImageDrawUtil.swift in Sources */,
 				A65A30A21F39B70100C48EB6 /* Global.swift in Sources */,
 				A6DD6EC41F30C9FC0063B562 /* WDPeripheal.swift in Sources */,
+				A62694341F4E84FA0048DE47 /* PRecordRefreshControl.swift in Sources */,
 				A65A30931F39B02500C48EB6 /* SwitchSettingCell.swift in Sources */,
 				A65A30A41F39B74D00C48EB6 /* Logger.swift in Sources */,
 				A65A30981F39B0BA00C48EB6 /* Spec.swift in Sources */,

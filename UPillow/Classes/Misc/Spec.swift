@@ -10,6 +10,14 @@ import UIKit
 
 /// UI Specs
 public struct Specs {
+    
+    public struct Constant {
+        public let radians: Float = Float(Double.pi/2)
+        public let kScreenWidth:CGFloat = UIScreen.main.bounds.size.width
+    }
+    
+    public static let constant = Constant()
+    
     // MARK: - Color
     public struct Color {
         public let insoleRSSILevelGreen = UIColor(r: 18, g: 235, b: 135)
@@ -26,6 +34,7 @@ public struct Specs {
         public let lightGray = UIColor(hex: 0xe0e0e0)
         public let blueGray = UIColor(hex: 0x607d8b)
         public let separator = UIColor(hex: 0x546e7a)
+        public let clear = UIColor.clear
         public let almostClear = UIColor(red: 0, green: 0, blue: 0, alpha: 0.002)
         public let almostClear2 = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05)
         public let arrowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05)

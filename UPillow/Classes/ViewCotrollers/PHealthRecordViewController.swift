@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JHPullToRefreshKit
 
 class PHealthRecordViewController: UIViewController {
 
@@ -29,6 +30,15 @@ class PHealthRecordViewController: UIViewController {
         monthSelectCollectView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
         recordTableView.tableFooterView = UIView.init()
+//        self.yahoo = [[YahooRefreshControl alloc] initWithType:JHRefreshControlTypeSlideDown];
+        if let myRefreshControl = PRecordRefreshControl.init(type: .slideDown) {
+            myRefreshControl.add(to: recordTableView) {
+                performAfterDelay(sec: 2, handler: {
+                    myRefreshControl.endRefreshing()
+                })
+            }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,13 +98,7 @@ extension PHealthRecordViewController:UITableViewDelegate,UITableViewDataSource 
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
-//        if translation.y > 0 {
-//
-//        } else {
-//            
-//        }
-        if self.recordTableView.contentOffset.y <= 150 {
+        if self.recordTableView.contentOffset.y <= 150 && self.recordTableView.contentOffset.y > 0 {
             self.monthSelectViewHeightConstraint.constant = 70 - self.recordTableView.contentOffset.y/3
         }
     }
