@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreBluetooth
+import iOSDFULibrary
 
 let kHomeStepCircleStartRed = 131.0/255.0
 let kHomeStepCircleStartGreen =  50.0/255.0

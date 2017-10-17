@@ -10,5 +10,6 @@ target 'UPillow' do
     pod 'pop'
     pod 'JHPullToRefreshKit'  #  刷新框架 https://cocoapods.org/pods/PullToRefreshKit
     pod 'Bugly'
+    pod 'iOSDFULibrary'
 
 end

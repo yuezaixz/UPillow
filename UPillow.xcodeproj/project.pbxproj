@@ -80,6 +80,8 @@
 		A6662BD61F3999E000691E1B /* PRedShadeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRedShadeButton.swift; sourceTree = "<group>"; };
 		A66687441F4B16AB0095D42B /* Number+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extensions.swift"; sourceTree = "<group>"; };
 		A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillowDiscoveryCell.swift; sourceTree = "<group>"; };
+		A68D826E1F95B1A100EB06A7 /* s130_ota236.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = s130_ota236.zip; sourceTree = "<group>"; };
+		A68D826F1F95B1A100EB06A7 /* s130_ota.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = s130_ota.zip; sourceTree = "<group>"; };
 		A6A7096F1F501B6C004DD024 /* PHealthDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHealthDetailViewController.swift; sourceTree = "<group>"; };
 		A6C82CE61F46C28200ED7502 /* PillowHealthData.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PillowHealthData.storyboard; sourceTree = "<group>"; };
 		A6C82CE81F46C46600ED7502 /* PHealthRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHealthRecordViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		A60118C41F3B0AD2007E0D20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A68D826D1F95B19200EB06A7 /* firmware */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -212,6 +215,15 @@
 				A65A30A31F39B74D00C48EB6 /* Logger.swift */,
 			);
 			path = Misc;
+			sourceTree = "<group>";
+		};
+		A68D826D1F95B19200EB06A7 /* firmware */ = {
+			isa = PBXGroup;
+			children = (
+				A68D826F1F95B1A100EB06A7 /* s130_ota.zip */,
+				A68D826E1F95B1A100EB06A7 /* s130_ota236.zip */,
+			);
+			path = firmware;
 			sourceTree = "<group>";
 		};
 		A6DD6EBE1F307CF20063B562 /* WDBluetoothKit */ = {

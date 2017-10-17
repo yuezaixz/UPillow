@@ -102,6 +102,7 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     }
     
     // MARK: API
+    
     func scanWithConfiguration(_ configuration:WDCBConfiguration, duration:Int) {
         busy = true
         _currentConfiguration = configuration
