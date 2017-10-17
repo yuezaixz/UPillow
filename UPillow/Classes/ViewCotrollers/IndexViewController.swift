@@ -225,6 +225,8 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     
     func autoConnectTimeout(for uuidStr: String) {
         stopAnimation()
+        self.clearAllNotice()
+        self.noticeError("连接失败", autoClear: true, autoClearTime: 2)
     }
     
     //MARK: - Navigation

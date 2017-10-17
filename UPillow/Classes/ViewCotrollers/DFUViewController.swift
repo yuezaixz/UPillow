@@ -99,6 +99,14 @@ class DFUViewController: UIViewController, CBCentralManagerDelegate, CBPeriphera
             centralManager!.delegate = self
             centralManager!.scanForPeripherals(withServices: [
                 DFUViewController.dfuServiceUUID])
+            dfuStatusLabel.text = "搜索中..."
+            performAfterDelay(sec: 15, handler: {
+                if self.scanningStarted {
+                    self.stopDiscovery()
+                    self.noticeError("升级失败", autoClear: true, autoClearTime: 2)
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
         }
     }
     
