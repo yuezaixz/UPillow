@@ -170,6 +170,15 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     
     //MARK: Action
     
+    @IBAction func actionTest(_ sender: Any) {
+        guard let peripheral = WDCentralManage.shareInstance.currentPeer else {
+            return
+        }
+        peripheral.sendCommand("dfu")
+        performSegue(withIdentifier: "showDFUView", sender: self)
+    }
+    
+    
     @IBAction func tapConnectGestureAction(_ sender: UITapGestureRecognizer) {
         if sender.state == UIGestureRecognizerState.ended {
             let sb = UIStoryboard.init(name: "Main", bundle: nil)
@@ -211,6 +220,21 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     func autoConnectTimeout(for uuidStr: String) {
         stopAnimation()
     }
+    
+    //MARK: - Navigation
+    
+    //如果要传数据
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        scanningStarted = false
+//        centralManager!.stopScan()
+//        if segue.identifier == "showDFUView" {
+//            //Sent the peripheral in the dfu view
+//            let dfuViewController = segue.destination as! DFUViewController
+//            dfuViewController.secureDFUMode(selectedPeripheralIsSecure)
+//            dfuViewController.setTargetPeripheral(selectedPeripheral!)
+//            dfuViewController.setCentralManager(centralManager!)
+//        }
+//    }
     
     //MARK:WDPeripheralDelegate
     

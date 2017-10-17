@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fYL-dH-kZR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fYL-dH-kZR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -15,6 +15,7 @@
     <customFonts key="customFonts">
         <array key="PingFang.ttc">
             <string>PingFangSC-Regular</string>
+            <string>PingFangSC-Semibold</string>
         </array>
     </customFonts>
     <scenes>
@@ -599,6 +600,17 @@
                                     <constraint firstItem="sKS-v6-Z4C" firstAttribute="centerX" secondItem="GMq-eL-QhU" secondAttribute="centerX" id="x17-QR-ct5"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lxo-Kl-Ge0">
+                                <rect key="frame" x="143" y="523" width="89" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73" id="v8y-J5-Jsm"/>
+                                    <constraint firstAttribute="width" constant="89" id="z7I-8Q-oP4"/>
+                                </constraints>
+                                <state key="normal" title="升级"/>
+                                <connections>
+                                    <action selector="actionTest:" destination="TSL-wS-yk1" eventType="touchUpInside" id="fDr-bZ-tZT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.10588235294117647" green="0.078431372549019607" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -608,11 +620,13 @@
                             <constraint firstItem="TL3-iU-SFQ" firstAttribute="centerY" secondItem="JFc-29-f2m" secondAttribute="centerY" id="6h8-gE-912"/>
                             <constraint firstItem="CuG-eP-hp9" firstAttribute="top" secondItem="JFc-29-f2m" secondAttribute="top" id="9Ct-GU-ErZ"/>
                             <constraint firstItem="PlE-rr-5Sz" firstAttribute="trailing" secondItem="JFc-29-f2m" secondAttribute="trailing" id="Iel-fV-i5c"/>
+                            <constraint firstItem="Lxo-Kl-Ge0" firstAttribute="centerX" secondItem="JFc-29-f2m" secondAttribute="centerX" id="K4l-jS-AXD"/>
                             <constraint firstItem="GMq-eL-QhU" firstAttribute="leading" secondItem="JFc-29-f2m" secondAttribute="leading" id="LdY-TK-gtI"/>
                             <constraint firstItem="PlE-rr-5Sz" firstAttribute="width" secondItem="HU1-Hm-lKG" secondAttribute="width" id="M1N-gx-0bM"/>
                             <constraint firstItem="GMq-eL-QhU" firstAttribute="trailing" secondItem="JFc-29-f2m" secondAttribute="trailing" id="Oes-AK-0AZ"/>
                             <constraint firstItem="CuG-eP-hp9" firstAttribute="trailing" secondItem="JFc-29-f2m" secondAttribute="trailing" id="R0I-nu-ttd"/>
                             <constraint firstItem="PlE-rr-5Sz" firstAttribute="centerY" secondItem="JFc-29-f2m" secondAttribute="centerY" id="Te2-Fv-An6"/>
+                            <constraint firstItem="JFc-29-f2m" firstAttribute="bottom" secondItem="Lxo-Kl-Ge0" secondAttribute="bottom" constant="22" id="mlM-T3-MfM"/>
                             <constraint firstItem="PlE-rr-5Sz" firstAttribute="leading" secondItem="JFc-29-f2m" secondAttribute="leading" id="y9P-G7-5kv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JFc-29-f2m"/>
@@ -649,11 +663,12 @@
                         <outletCollection property="circleViews" destination="g48-oB-415" collectionClass="NSMutableArray" id="n98-tI-DHz"/>
                         <outletCollection property="circleViews" destination="dV1-4o-jd6" collectionClass="NSMutableArray" id="Gq9-0L-eeJ"/>
                         <outletCollection property="circleViews" destination="6fs-DI-0oQ" collectionClass="NSMutableArray" id="GXn-EM-SHR"/>
+                        <segue destination="4XB-jP-eRc" kind="show" identifier="showDFUView" id="OlY-5n-ydG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6E-bz-nxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="324" y="-134"/>
+            <point key="canvasLocation" x="324" y="-134.48275862068968"/>
         </scene>
         <!--设备连接-->
         <scene sceneID="BCd-sY-eEw">
@@ -1226,6 +1241,112 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Nd-p1-1Bi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="466" y="1298"/>
+        </scene>
+        <!--DFU View-->
+        <scene sceneID="X5u-ij-xMv">
+            <objects>
+                <viewController title="DFU View" id="4XB-jP-eRc" customClass="DFUViewController" customModule="DFU_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qD1-nU-CoP"/>
+                        <viewControllerLayoutGuide type="bottom" id="WkA-81-qCU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DYl-iY-rUJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XQQ-P2-IHj">
+                                <rect key="frame" x="16" y="399" width="343" height="2"/>
+                                <color key="progressTintColor" red="0.0" green="0.60392156860000001" blue="0.85490196080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="trackTintColor" red="0.73588360659999996" green="0.92748980240000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flashing: &lt;Peripheral Name&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kor-dC-Nyk">
+                                <rect key="frame" x="16" y="60" width="343" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xVH-iX-gmk">
+                                <rect key="frame" x="177.5" y="360" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload status" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dlf-xR-ey9">
+                                <rect key="frame" x="16" y="409" width="343" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" id="aHa-es-zdc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DFU Status" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vjj-YY-MFH">
+                                <rect key="frame" x="16" y="259" width="343" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="104" id="fau-3Z-2RG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBb-h0-NMg">
+                                <rect key="frame" x="0.0" y="617" width="375" height="30"/>
+                                <state key="normal" title="Stop process"/>
+                                <connections>
+                                    <action selector="stopProcessButtonTapped:" destination="4XB-jP-eRc" eventType="touchUpInside" id="WE7-A1-RAB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xi-6z-RaD">
+                                <rect key="frame" x="20" y="15" width="63" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="PUc-J5-bH8"/>
+                                    <constraint firstAttribute="width" constant="63" id="QSB-lU-d4j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="20"/>
+                                <state key="normal" title="返回">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionBack:" destination="4XB-jP-eRc" eventType="touchUpInside" id="N13-fc-AIt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kor-dC-Nyk" firstAttribute="top" secondItem="qD1-nU-CoP" secondAttribute="bottom" constant="40" id="26c-ee-wWq"/>
+                            <constraint firstItem="XQQ-P2-IHj" firstAttribute="trailing" secondItem="DYl-iY-rUJ" secondAttribute="trailingMargin" id="2e2-6b-DzY"/>
+                            <constraint firstItem="WkA-81-qCU" firstAttribute="top" secondItem="pBb-h0-NMg" secondAttribute="bottom" constant="20" id="7mZ-S5-KRc"/>
+                            <constraint firstItem="XQQ-P2-IHj" firstAttribute="top" secondItem="vjj-YY-MFH" secondAttribute="bottom" constant="36" id="8XT-S8-IZS"/>
+                            <constraint firstItem="kor-dC-Nyk" firstAttribute="leading" secondItem="DYl-iY-rUJ" secondAttribute="leadingMargin" id="9dE-PB-dM6"/>
+                            <constraint firstItem="dlf-xR-ey9" firstAttribute="leading" secondItem="DYl-iY-rUJ" secondAttribute="leadingMargin" id="Ctz-gi-0Ei"/>
+                            <constraint firstItem="dlf-xR-ey9" firstAttribute="trailing" secondItem="DYl-iY-rUJ" secondAttribute="trailingMargin" id="HYJ-un-1dR"/>
+                            <constraint firstItem="2xi-6z-RaD" firstAttribute="leading" secondItem="5cf-me-Sa1" secondAttribute="leading" constant="20" id="LL0-VU-CuJ"/>
+                            <constraint firstItem="xVH-iX-gmk" firstAttribute="centerX" secondItem="DYl-iY-rUJ" secondAttribute="centerX" id="Po1-fc-j5e"/>
+                            <constraint firstItem="vjj-YY-MFH" firstAttribute="trailing" secondItem="DYl-iY-rUJ" secondAttribute="trailingMargin" id="RL7-sj-csU"/>
+                            <constraint firstAttribute="trailing" secondItem="pBb-h0-NMg" secondAttribute="trailing" id="RM6-8T-BEK"/>
+                            <constraint firstItem="pBb-h0-NMg" firstAttribute="leading" secondItem="DYl-iY-rUJ" secondAttribute="leading" id="TvJ-eQ-spr"/>
+                            <constraint firstItem="kor-dC-Nyk" firstAttribute="trailing" secondItem="DYl-iY-rUJ" secondAttribute="trailingMargin" id="UxF-Ev-KOU"/>
+                            <constraint firstItem="XQQ-P2-IHj" firstAttribute="centerY" secondItem="DYl-iY-rUJ" secondAttribute="centerY" multiplier="1.2" id="Y4t-5F-kbC"/>
+                            <constraint firstItem="XQQ-P2-IHj" firstAttribute="leading" secondItem="DYl-iY-rUJ" secondAttribute="leadingMargin" id="aTm-41-BUU"/>
+                            <constraint firstItem="vjj-YY-MFH" firstAttribute="leading" secondItem="DYl-iY-rUJ" secondAttribute="leadingMargin" id="bSQ-HX-agG"/>
+                            <constraint firstItem="XQQ-P2-IHj" firstAttribute="top" secondItem="xVH-iX-gmk" secondAttribute="bottom" constant="19" id="h1E-10-Reb"/>
+                            <constraint firstItem="dlf-xR-ey9" firstAttribute="top" secondItem="XQQ-P2-IHj" secondAttribute="bottom" constant="8" id="naa-kC-MIe"/>
+                            <constraint firstItem="2xi-6z-RaD" firstAttribute="top" secondItem="qD1-nU-CoP" secondAttribute="bottom" constant="-5" id="tuB-Fe-sF8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5cf-me-Sa1"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="DFU" id="6iL-1p-sBc">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="X4S-wv-IDC"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="dfuActivityIndicator" destination="xVH-iX-gmk" id="3hQ-hK-lu6"/>
+                        <outlet property="dfuStatusLabel" destination="vjj-YY-MFH" id="hjY-Or-yfE"/>
+                        <outlet property="dfuUploadProgressView" destination="XQQ-P2-IHj" id="xew-iE-a6q"/>
+                        <outlet property="dfuUploadStatus" destination="dlf-xR-ey9" id="vXj-uJ-ldf"/>
+                        <outlet property="peripheralNameLabel" destination="kor-dC-Nyk" id="S7n-nO-jdv"/>
+                        <outlet property="stopProcessButton" destination="pBb-h0-NMg" id="XNI-Vv-RwW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uSp-pY-R73" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="336.80000000000001" y="-842.42878560719646"/>
         </scene>
     </scenes>
     <resources>

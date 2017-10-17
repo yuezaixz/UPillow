@@ -59,6 +59,12 @@ public class WDCentralManage: NSObject,CBCentralManagerDelegate {
     
     private var _centralManager: CBCentralManager!
     
+    var centralManager: CBCentralManager {
+        get{
+            return _centralManager!
+        }
+    }
+    
     private var _currentConfiguration: WDCBConfiguration!
     
     private var _durationTimer: Timer!

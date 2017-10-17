@@ -34,6 +34,9 @@
 		A6662BD71F3999E000691E1B /* PRedShadeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6662BD61F3999E000691E1B /* PRedShadeButton.swift */; };
 		A66687451F4B16AB0095D42B /* Number+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66687441F4B16AB0095D42B /* Number+Extensions.swift */; };
 		A6809A3E1F34744800089E7A /* PillowDiscoveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */; };
+		A68D82711F95B47C00EB06A7 /* DFUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68D82701F95B47C00EB06A7 /* DFUViewController.swift */; };
+		A68D82721F95D97400EB06A7 /* s130_ota.zip in Resources */ = {isa = PBXBuildFile; fileRef = A68D826F1F95B1A100EB06A7 /* s130_ota.zip */; };
+		A68D82731F95D97600EB06A7 /* s130_ota236.zip in Resources */ = {isa = PBXBuildFile; fileRef = A68D826E1F95B1A100EB06A7 /* s130_ota236.zip */; };
 		A6A709701F501B6C004DD024 /* PHealthDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A7096F1F501B6C004DD024 /* PHealthDetailViewController.swift */; };
 		A6C82CE71F46C28200ED7502 /* PillowHealthData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6C82CE61F46C28200ED7502 /* PillowHealthData.storyboard */; };
 		A6C82CE91F46C46600ED7502 /* PHealthRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C82CE81F46C46600ED7502 /* PHealthRecordViewController.swift */; };
@@ -82,6 +85,7 @@
 		A6809A3D1F34744800089E7A /* PillowDiscoveryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillowDiscoveryCell.swift; sourceTree = "<group>"; };
 		A68D826E1F95B1A100EB06A7 /* s130_ota236.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = s130_ota236.zip; sourceTree = "<group>"; };
 		A68D826F1F95B1A100EB06A7 /* s130_ota.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = s130_ota.zip; sourceTree = "<group>"; };
+		A68D82701F95B47C00EB06A7 /* DFUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFUViewController.swift; sourceTree = "<group>"; };
 		A6A7096F1F501B6C004DD024 /* PHealthDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHealthDetailViewController.swift; sourceTree = "<group>"; };
 		A6C82CE61F46C28200ED7502 /* PillowHealthData.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PillowHealthData.storyboard; sourceTree = "<group>"; };
 		A6C82CE81F46C46600ED7502 /* PHealthRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHealthRecordViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 				A60118C21F3AB468007E0D20 /* PSettingViewController.swift */,
 				A6C82CE81F46C46600ED7502 /* PHealthRecordViewController.swift */,
 				A6A7096F1F501B6C004DD024 /* PHealthDetailViewController.swift */,
+				A68D82701F95B47C00EB06A7 /* DFUViewController.swift */,
 			);
 			path = ViewCotrollers;
 			sourceTree = "<group>";
@@ -326,8 +331,10 @@
 			files = (
 				A60B143D1F2F048F00675C6E /* LaunchScreen.storyboard in Resources */,
 				A65A30AD1F39B8A200C48EB6 /* Localizable.strings in Resources */,
+				A68D82721F95D97400EB06A7 /* s130_ota.zip in Resources */,
 				A6C82CE71F46C28200ED7502 /* PillowHealthData.storyboard in Resources */,
 				A60B143A1F2F048F00675C6E /* Assets.xcassets in Resources */,
+				A68D82731F95D97600EB06A7 /* s130_ota236.zip in Resources */,
 				A6C82CF11F46E0C800ED7502 /* PStatusChartView.xib in Resources */,
 				A60B14381F2F048F00675C6E /* Main.storyboard in Resources */,
 			);
@@ -404,6 +411,7 @@
 				A65A30981F39B0BA00C48EB6 /* Spec.swift in Sources */,
 				A617EC0F1F345C820017A7E8 /* CBCentralManager+Extensions.swift in Sources */,
 				A6C82CE91F46C46600ED7502 /* PHealthRecordViewController.swift in Sources */,
+				A68D82711F95B47C00EB06A7 /* DFUViewController.swift in Sources */,
 				A60118C31F3AB468007E0D20 /* PSettingViewController.swift in Sources */,
 				A6DD6EC71F32FB7A0063B562 /* PDataHandle.swift in Sources */,
 				A60B14331F2F048F00675C6E /* AppDelegate.swift in Sources */,
