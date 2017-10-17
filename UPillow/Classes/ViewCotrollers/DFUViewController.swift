@@ -152,7 +152,7 @@ class DFUViewController: UIViewController, CBCentralManagerDelegate, CBPeriphera
     }
     
     func connectDfuPeripheral() {
-        peripheralNameLabel.text = "Flashing \((dfuPeripheral?.name)!)..."
+        peripheralNameLabel.text = "升级中 \((dfuPeripheral?.name)!)..."
         dfuActivityIndicator.startAnimating()
         dfuUploadProgressView.progress = 0.0
         dfuUploadStatus.text = ""
@@ -241,7 +241,7 @@ class DFUViewController: UIViewController, CBCentralManagerDelegate, CBPeriphera
             self.stopProcessButton.isEnabled = true
         }
 
-        dfuStatusLabel.text = state.description()
+        dfuStatusLabel.text = state.zhDescription()
         print("Changed state to: \(state.description())")
         
         // Forget the controller when DFU is done
@@ -251,7 +251,7 @@ class DFUViewController: UIViewController, CBCentralManagerDelegate, CBPeriphera
     }
 
     func dfuError(_ error: DFUError, didOccurWithMessage message: String) {
-        dfuStatusLabel.text = "Error \(error.rawValue): \(message)"
+        dfuStatusLabel.text = "错误 \(error.rawValue): \(message)"
         dfuActivityIndicator.stopAnimating()
         dfuUploadProgressView.setProgress(0, animated: true)
         print("Error \(error.rawValue): \(message)")
@@ -264,7 +264,7 @@ class DFUViewController: UIViewController, CBCentralManagerDelegate, CBPeriphera
     
     func dfuProgressDidChange(for part: Int, outOf totalParts: Int, to progress: Int, currentSpeedBytesPerSecond: Double, avgSpeedBytesPerSecond: Double) {
         dfuUploadProgressView.setProgress(Float(progress)/100.0, animated: true)
-        dfuUploadStatus.text = String(format: "Part: %d/%d\nSpeed: %.1f KB/s\nAverage Speed: %.1f KB/s",
+        dfuUploadStatus.text = String(format: "进度: %d/%d\n速度: %.1f KB/s\n平均速度: %.1f KB/s",
                                       part, totalParts, currentSpeedBytesPerSecond/1024, avgSpeedBytesPerSecond/1024)
     }
 
@@ -272,5 +272,20 @@ class DFUViewController: UIViewController, CBCentralManagerDelegate, CBPeriphera
     
     func logWith(_ level: LogLevel, message: String) {
         print("\(level.name()): \(message)")
+    }
+}
+
+extension DFUState {
+    public func zhDescription() -> String {
+        switch self {
+        case .connecting:      return "连接中"
+        case .starting:        return "开始"
+        case .enablingDfuMode: return "激活升级模式"
+        case .uploading:       return "传输中"
+        case .validating:      return "验证中"  // this state occurs only in Legacy DFU
+        case .disconnecting:   return "断开中"
+        case .completed:       return "已完成"
+        case .aborted:         return "中止"
+        }
     }
 }

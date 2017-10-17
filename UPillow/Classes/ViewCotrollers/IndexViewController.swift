@@ -37,6 +37,7 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
     @IBOutlet weak var sleepPoseLabel: UILabel!
     @IBOutlet weak var pillowLevelLabel: UILabel!
     
+    private var isOTA:Bool = false
     
     private var animationTimer:Timer?
     
@@ -174,6 +175,7 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
         guard let peripheral = WDCentralManage.shareInstance.currentPeer else {
             return
         }
+        isOTA = true
         peripheral.sendCommand("dfu")
         performSegue(withIdentifier: "showDFUView", sender: self)
     }
@@ -204,9 +206,13 @@ class IndexViewController: UIViewController,WDCentralManageDelegate,WDPeriphealD
         self.clearAllNotice()
         self.loadCurrentPeer(peripheal)
         self.noticeSuccess("连接成功", autoClear: true, autoClearTime: 2)
+        isOTA = false
     }
     
     func didDisConnected(for peripheal: WDPeripheal) {
+        if isOTA {
+            return
+        }
         self.clearAllNotice()
         self.noticeError("断开连接", autoClear: true, autoClearTime: 2)
     }
