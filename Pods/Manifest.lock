@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.5.0)
+  - Alamofire (4.5.1)
   - Bugly (2.4.8)
   - iOSDFULibrary (4.0.2):
     - Zip (~> 1.0)
@@ -15,7 +15,7 @@ DEPENDENCIES:
   - pop
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   Bugly: da3c02408c14838d498429320545a8e439392978
   iOSDFULibrary: 739d3b5f2c99120b4e9b93ca165d9e451e3c8dec
   JHPullToRefreshKit: ec51e32764eacf468eddf3d05a9f1b3b6d9a7d76

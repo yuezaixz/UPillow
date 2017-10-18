@@ -43,6 +43,8 @@
 		A6C82CED1F46D24F00ED7502 /* PImageDrawUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C82CEC1F46D24F00ED7502 /* PImageDrawUtil.swift */; };
 		A6C82CEF1F46DF5900ED7502 /* PStatusChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C82CEE1F46DF5900ED7502 /* PStatusChartView.swift */; };
 		A6C82CF11F46E0C800ED7502 /* PStatusChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6C82CF01F46E0C800ED7502 /* PStatusChartView.xib */; };
+		A6D120251F960C7F00403A5B /* ZT_S130_H801.zip in Resources */ = {isa = PBXBuildFile; fileRef = A6D120241F960B6D00403A5B /* ZT_S130_H801.zip */; };
+		A6D120271F9714E300403A5B /* ZT_S130_H301.zip in Resources */ = {isa = PBXBuildFile; fileRef = A6D120261F9714E100403A5B /* ZT_S130_H301.zip */; };
 		A6DD6EC01F30801F0063B562 /* WDCentralManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EBF1F30801F0063B562 /* WDCentralManage.swift */; };
 		A6DD6EC21F30C4C20063B562 /* WDCBConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EC11F30C4C20063B562 /* WDCBConfiguration.swift */; };
 		A6DD6EC41F30C9FC0063B562 /* WDPeripheal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD6EC31F30C9FC0063B562 /* WDPeripheal.swift */; };
@@ -92,6 +94,8 @@
 		A6C82CEC1F46D24F00ED7502 /* PImageDrawUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PImageDrawUtil.swift; sourceTree = "<group>"; };
 		A6C82CEE1F46DF5900ED7502 /* PStatusChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PStatusChartView.swift; sourceTree = "<group>"; };
 		A6C82CF01F46E0C800ED7502 /* PStatusChartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PStatusChartView.xib; sourceTree = "<group>"; };
+		A6D120241F960B6D00403A5B /* ZT_S130_H801.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = ZT_S130_H801.zip; sourceTree = "<group>"; };
+		A6D120261F9714E100403A5B /* ZT_S130_H301.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = ZT_S130_H301.zip; sourceTree = "<group>"; };
 		A6DD6EBF1F30801F0063B562 /* WDCentralManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCentralManage.swift; sourceTree = "<group>"; };
 		A6DD6EC11F30C4C20063B562 /* WDCBConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDCBConfiguration.swift; sourceTree = "<group>"; };
 		A6DD6EC31F30C9FC0063B562 /* WDPeripheal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDPeripheal.swift; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 			children = (
 				A68D826F1F95B1A100EB06A7 /* s130_ota.zip */,
 				A68D826E1F95B1A100EB06A7 /* s130_ota236.zip */,
+				A6D120241F960B6D00403A5B /* ZT_S130_H801.zip */,
+				A6D120261F9714E100403A5B /* ZT_S130_H301.zip */,
 			);
 			path = firmware;
 			sourceTree = "<group>";
@@ -329,7 +335,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6D120251F960C7F00403A5B /* ZT_S130_H801.zip in Resources */,
 				A60B143D1F2F048F00675C6E /* LaunchScreen.storyboard in Resources */,
+				A6D120271F9714E300403A5B /* ZT_S130_H301.zip in Resources */,
 				A65A30AD1F39B8A200C48EB6 /* Localizable.strings in Resources */,
 				A68D82721F95D97400EB06A7 /* s130_ota.zip in Resources */,
 				A6C82CE71F46C28200ED7502 /* PillowHealthData.storyboard in Resources */,

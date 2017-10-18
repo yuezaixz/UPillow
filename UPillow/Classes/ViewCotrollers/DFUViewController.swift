@@ -119,7 +119,7 @@ class DFUViewController: UIViewController, CBCentralManagerDelegate, CBPeriphera
     }
     
     func getBundledFirmwareURLHelper() -> URL? {
-        return Bundle.main.url(forResource: "s130_ota", withExtension: "zip")!
+        return Bundle.main.url(forResource: "ZT_S130_H801", withExtension: "zip")!
     }
     
     func startDFUProcess() {
@@ -132,6 +132,9 @@ class DFUViewController: UIViewController, CBCentralManagerDelegate, CBPeriphera
         dfuInitiator.delegate = self
         dfuInitiator.progressDelegate = self
         dfuInitiator.logger = self
+        
+        //不设置默认是12，没升级完成就会断开。
+        dfuInitiator.packetReceiptNotificationParameter = 1
         
         // This enables the experimental Buttonless DFU feature from SDK 12.
         // Please, read the field documentation before use.
