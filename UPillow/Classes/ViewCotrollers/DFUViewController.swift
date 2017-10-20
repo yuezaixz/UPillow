@@ -134,7 +134,7 @@ class DFUViewController: UIViewController, CBCentralManagerDelegate, CBPeriphera
         dfuInitiator.logger = self
         
         //不设置默认是12，没升级完成就会断开。
-        dfuInitiator.packetReceiptNotificationParameter = 1
+//        dfuInitiator.packetReceiptNotificationParameter = 1
         
         // This enables the experimental Buttonless DFU feature from SDK 12.
         // Please, read the field documentation before use.
